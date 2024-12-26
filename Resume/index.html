@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adesh Gaurav - Resume</title>
+    <style>
+        /* General Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #121212;
+            color: #e0e0e0;
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
+
+        a {
+            color: #1db954;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* Header Styles */
+        header {
+            text-align: center;
+            padding: 50px 20px;
+            background-color: #1f1f1f;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        header h1 {
+            font-size: 2.8em;
+            margin-bottom: 10px;
+            color: #1db954;
+        }
+
+        header p {
+            font-size: 1.2em;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            margin-top: 10px;
+            background-color: #1db954;
+            color: #121212;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #1a8746;
+            transform: translateY(-2px);
+        }
+
+        /* Section Styles */
+        section {
+            max-width: 900px;
+            margin: 30px auto;
+            padding: 20px;
+            background-color: #1e1e1e;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s;
+        }
+
+        section:hover {
+            transform: scale(1.02);
+        }
+
+        section h2 {
+            font-size: 1.8em;
+            color: #1db954;
+            margin-bottom: 15px;
+        }
+
+        /* Progress Bar Styles */
+        .progress {
+            background-color: #333;
+            border-radius: 8px;
+            overflow: hidden;
+            margin: 10px 0;
+        }
+
+        .progress-bar {
+            height: 20px;
+            background-color: #1db954;
+            text-align: center;
+            line-height: 20px;
+            color: #121212;
+            font-weight: bold;
+            transition: width 0.5s ease-in-out;
+        }
+
+        /* Carousel Styles */
+        .carousel {
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            gap: 15px;
+        }
+
+        .carousel div {
+            flex: 0 0 250px;
+            background-color: #2b2b2b;
+            color: #e0e0e0;
+            border-radius: 8px;
+            padding: 15px;
+            text-align: center;
+            scroll-snap-align: start;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .carousel div:hover {
+            background-color: #1db954;
+            color: #121212;
+            transform: scale(1.05);
+            transition: all 0.3s;
+        }
+
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #1db954;
+            color: #121212;
+            padding: 10px 15px;
+            border-radius: 50%;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .back-to-top:hover {
+            background-color: #1a8746;
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Adesh Gaurav</h1>
+        <p>Data Scientist | AI Enthusiast | Tech Innovator</p>
+        <a href="#contact" class="btn">Contact Me</a>
+        <a href="#projects" class="btn">View Projects</a>
+    </header>
+
+    <section>
+        <h2>About Me</h2>
+        <p>I’m a passionate data scientist with expertise in building data pipelines, predictive models, and AI-driven solutions. My current focus is on leveraging AI to address real-world challenges in business and sustainability.</p>
+    </section>
+
+    <section>
+        <h2>Skills</h2>
+        <div class="progress">
+            <div class="progress-bar" style="width: 90%;">Python</div>
+        </div>
+        <div class="progress">
+            <div class="progress-bar" style="width: 85%;">SQL</div>
+        </div>
+        <div class="progress">
+            <div class="progress-bar" style="width: 80%;">Machine Learning</div>
+        </div>
+    </section>
+
+    <section id="projects">
+        <h2>Projects</h2>
+        <div class="carousel">
+            <div>
+                <h3>Clean Energy AI Tool</h3>
+                <p>Predictive app for energy decision-making.</p>
+            </div>
+            <div>
+                <h3>Employee Well-being Analysis</h3>
+                <p>Statistical learning for work-life balance.</p>
+            </div>
+            <div>
+                <h3>Pharmaceutical Sales Forecasting</h3>
+                <p>Time series modeling for sales prediction.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2>Contact</h2>
+        <p>Email: <a href="mailto:adesh.gaurav@example.com">adesh.gaurav@example.com</a></p>
+        <p>GitHub: <a href="https://github.com/AdeshGaurav" target="_blank">github.com/AdeshGaurav</a></p>
+        <p>LinkedIn: <a href="https://linkedin.com/in/AdeshGaurav" target="_blank">linkedin.com/in/AdeshGaurav</a></p>
+    </section>
+
+    <footer>
+        <p>© 2024 Adesh Gaurav. Built with 💻 and ☕.</p>
+    </footer>
+
+    <div class="back-to-top" onclick="scrollToTop()">↑</div>
+
+    <script>
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
