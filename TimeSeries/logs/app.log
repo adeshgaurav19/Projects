@@ -1,0 +1,156 @@
+2024-12-26 03:21:25,010 - timeseriesapp - INFO - Attempting to upload file: Electric_Production.csv, size: 7318
+2024-12-26 03:21:25,011 - timeseriesapp - INFO - File content preview: DATE,IPG2211A2N
+1/1/1985,72.5052
+2/1/1985,70.672
+3/1/1985,62.4502
+4/1/1985,57.4714
+5/1/1985,55.3151
+6/1/1985,58.0904
+7/1/1985,62.6202
+8/1/1985,63.2485
+9/1/1985,60.5846
+10/1/1985,56.3154
+11/
+2024-12-26 03:21:25,057 - timeseriesapp - INFO - File Electric_Production.csv uploaded successfully. Columns: ['DATE', 'IPG2211A2N']
+2024-12-26 03:24:43,173 - timeseriesapp - INFO - Fetching data for ticker: AAPL, from 2023-01-01 to 2023-12-31
+2024-12-26 03:24:43,903 - timeseriesapp - ERROR - Unexpected error fetching data: object DataFrame can't be used in 'await' expression
+2024-12-26 03:25:56,229 - timeseriesapp - INFO - Fetching data for ticker: AAPL, from 2023-01-01 to 2023-12-31
+2024-12-26 03:25:56,230 - timeseriesapp - ERROR - Unexpected error fetching data: name 'datetime' is not defined
+2024-12-26 03:26:29,455 - timeseriesapp - INFO - Fetching data for ticker: AAPL, from 2023-01-01 to 2023-12-31
+2024-12-26 03:26:29,879 - timeseriesapp - INFO - Successfully fetched 250 rows of data for AAPL
+2024-12-26 03:27:10,838 - timeseriesapp - INFO - Fetching data for ticker: AAPL, from 2023-01-01 to 2023-12-31
+2024-12-26 03:27:10,886 - timeseriesapp - INFO - Successfully fetched 250 rows of data for AAPL
+2024-12-26 03:27:19,109 - timeseriesapp - INFO - Attempting to upload file: Electric_Production.csv, size: 7318
+2024-12-26 03:27:19,110 - timeseriesapp - INFO - File content preview: DATE,IPG2211A2N
+1/1/1985,72.5052
+2/1/1985,70.672
+3/1/1985,62.4502
+4/1/1985,57.4714
+5/1/1985,55.3151
+6/1/1985,58.0904
+7/1/1985,62.6202
+8/1/1985,63.2485
+9/1/1985,60.5846
+10/1/1985,56.3154
+11/
+2024-12-26 03:27:19,133 - timeseriesapp - INFO - File Electric_Production.csv uploaded successfully. Columns: ['DATE', 'IPG2211A2N']
+2024-12-26 03:29:56,611 - timeseriesapp - INFO - Fetching data for ticker: AAPL, from 2023-01-01 to 2023-12-31
+2024-12-26 03:29:56,644 - timeseriesapp - INFO - Successfully fetched 250 rows of data for AAPL
+2024-12-26 03:30:07,341 - timeseriesapp - INFO - Fetching data for ticker: AAPL, from 2023-01-01 to 2023-12-31
+2024-12-26 03:30:07,384 - timeseriesapp - INFO - Successfully fetched 250 rows of data for AAPL
+2024-12-26 03:33:38,431 - timeseriesapp - INFO - Fetching data for ticker: AAPL, from 2023-01-01 to 2023-12-31
+2024-12-26 03:33:38,492 - timeseriesapp - INFO - Successfully fetched 250 rows of data for AAPL
+2024-12-26 03:38:26,202 - timeseriesapp - INFO - Attempting to upload file: Electric_Production.csv, size: 7318
+2024-12-26 03:38:26,204 - timeseriesapp - INFO - File content preview: DATE,IPG2211A2N
+1/1/1985,72.5052
+2/1/1985,70.672
+3/1/1985,62.4502
+4/1/1985,57.4714
+5/1/1985,55.3151
+6/1/1985,58.0904
+7/1/1985,62.6202
+8/1/1985,63.2485
+9/1/1985,60.5846
+10/1/1985,56.3154
+11/
+2024-12-26 03:38:26,231 - timeseriesapp - INFO - File Electric_Production.csv uploaded successfully. Columns: ['DATE', 'IPG2211A2N']
+2024-12-26 03:38:27,826 - timeseriesapp - INFO - Fetching data for ticker: AAPL, from 2023-01-01 to 2023-12-31
+2024-12-26 03:38:27,900 - timeseriesapp - INFO - Successfully fetched 250 rows of data for AAPL
+2024-12-26 03:39:55,872 - timeseriesapp - INFO - Attempting to upload file: Electric_Production.csv, size: 7318
+2024-12-26 03:39:55,873 - timeseriesapp - INFO - File content preview: DATE,IPG2211A2N
+1/1/1985,72.5052
+2/1/1985,70.672
+3/1/1985,62.4502
+4/1/1985,57.4714
+5/1/1985,55.3151
+6/1/1985,58.0904
+7/1/1985,62.6202
+8/1/1985,63.2485
+9/1/1985,60.5846
+10/1/1985,56.3154
+11/
+2024-12-26 03:39:55,879 - timeseriesapp - INFO - File Electric_Production.csv uploaded successfully. Columns: ['DATE', 'IPG2211A2N']
+2024-12-26 03:39:57,362 - timeseriesapp - INFO - Attempting to upload file: Electric_Production.csv, size: 7318
+2024-12-26 03:39:57,362 - timeseriesapp - INFO - File content preview: DATE,IPG2211A2N
+1/1/1985,72.5052
+2/1/1985,70.672
+3/1/1985,62.4502
+4/1/1985,57.4714
+5/1/1985,55.3151
+6/1/1985,58.0904
+7/1/1985,62.6202
+8/1/1985,63.2485
+9/1/1985,60.5846
+10/1/1985,56.3154
+11/
+2024-12-26 03:39:57,365 - timeseriesapp - INFO - File Electric_Production.csv uploaded successfully. Columns: ['DATE', 'IPG2211A2N']
+2024-12-26 03:40:12,054 - timeseriesapp - INFO - Fetching data for ticker: AAPL, from 2023-01-01 to 2023-12-31
+2024-12-26 03:40:12,092 - timeseriesapp - INFO - Successfully fetched 250 rows of data for AAPL
+2024-12-26 03:41:25,630 - timeseriesapp - INFO - Attempting to upload file: Electric_Production.csv, size: 7318
+2024-12-26 03:41:25,631 - timeseriesapp - INFO - File content preview: DATE,IPG2211A2N
+1/1/1985,72.5052
+2/1/1985,70.672
+3/1/1985,62.4502
+4/1/1985,57.4714
+5/1/1985,55.3151
+6/1/1985,58.0904
+7/1/1985,62.6202
+8/1/1985,63.2485
+9/1/1985,60.5846
+10/1/1985,56.3154
+11/
+2024-12-26 03:41:25,655 - timeseriesapp - INFO - File Electric_Production.csv uploaded successfully. Columns: ['DATE', 'IPG2211A2N']
+2024-12-26 03:41:44,534 - timeseriesapp - INFO - Fetching data for ticker: AAPL, from 2023-01-01 to 2023-12-31
+2024-12-26 03:41:45,023 - timeseriesapp - INFO - Successfully fetched 250 rows of data for AAPL
+2024-12-26 03:42:21,491 - timeseriesapp - INFO - Attempting to upload file: Electric_Production.csv, size: 7318
+2024-12-26 03:42:21,492 - timeseriesapp - INFO - File content preview: DATE,IPG2211A2N
+1/1/1985,72.5052
+2/1/1985,70.672
+3/1/1985,62.4502
+4/1/1985,57.4714
+5/1/1985,55.3151
+6/1/1985,58.0904
+7/1/1985,62.6202
+8/1/1985,63.2485
+9/1/1985,60.5846
+10/1/1985,56.3154
+11/
+2024-12-26 03:42:21,522 - timeseriesapp - INFO - File Electric_Production.csv uploaded successfully. Columns: ['DATE', 'IPG2211A2N']
+2024-12-26 03:42:26,523 - timeseriesapp - INFO - Fetching data for ticker: AAPL, from 2023-01-01 to 2023-12-31
+2024-12-26 03:42:26,966 - timeseriesapp - INFO - Successfully fetched 250 rows of data for AAPL
+2024-12-26 03:47:24,811 - timeseriesapp - INFO - Fetching data for ticker: AAPL, from 2023-01-01 to 2023-12-31
+2024-12-26 03:47:24,862 - timeseriesapp - INFO - Successfully fetched 250 rows of data for AAPL
+2024-12-26 03:49:59,018 - timeseriesapp - INFO - Fetching data for ticker: AAPL, from 2023-01-01 to 2023-12-31
+2024-12-26 03:49:59,149 - timeseriesapp - INFO - Successfully fetched 250 rows of data for AAPL
+2024-12-26 03:50:56,071 - timeseriesapp - INFO - Fetching data for ticker: AAPL, from 2023-01-01 to 2023-12-31
+2024-12-26 03:50:56,497 - timeseriesapp - INFO - Successfully fetched 250 rows of data for AAPL
+2024-12-26 03:51:51,157 - timeseriesapp - INFO - Attempting to upload file: Electric_Production.csv, size: 7318
+2024-12-26 03:51:51,158 - timeseriesapp - INFO - File content preview: DATE,IPG2211A2N
+1/1/1985,72.5052
+2/1/1985,70.672
+3/1/1985,62.4502
+4/1/1985,57.4714
+5/1/1985,55.3151
+6/1/1985,58.0904
+7/1/1985,62.6202
+8/1/1985,63.2485
+9/1/1985,60.5846
+10/1/1985,56.3154
+11/
+2024-12-26 03:51:51,172 - timeseriesapp - INFO - File Electric_Production.csv uploaded successfully. Columns: ['DATE', 'IPG2211A2N']
+2024-12-26 03:51:54,903 - timeseriesapp - INFO - Performing EDA with option: line_plot, column: IPG2211A2N
+2024-12-26 03:52:56,210 - timeseriesapp - INFO - Attempting to upload file: Electric_Production.csv, size: 7318
+2024-12-26 03:52:56,212 - timeseriesapp - INFO - File content preview: DATE,IPG2211A2N
+1/1/1985,72.5052
+2/1/1985,70.672
+3/1/1985,62.4502
+4/1/1985,57.4714
+5/1/1985,55.3151
+6/1/1985,58.0904
+7/1/1985,62.6202
+8/1/1985,63.2485
+9/1/1985,60.5846
+10/1/1985,56.3154
+11/
+2024-12-26 03:52:56,226 - timeseriesapp - INFO - File Electric_Production.csv uploaded successfully. Columns: ['DATE', 'IPG2211A2N']
+2024-12-26 03:52:58,887 - timeseriesapp - INFO - Performing EDA with option: line_plot, column: DATE
