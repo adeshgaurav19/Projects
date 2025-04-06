@@ -21,26 +21,25 @@ import asyncio
 import logging
 import os
 from datetime import datetime
+import gc
 
 app = FastAPI()
 
-from fastapi.middleware.cors import CORSMiddleware
-
+# CORS Middleware setup
 origins = [
-    "http://localhost",       # Allow frontend running on localhost
-    "http://127.0.0.1",       # Allow frontend running on localhost IP
-    "file://",                 # Allow file:// (local files)
-    "*",                       # Allow all origins (this is more permissive, but useful for debugging)
+    "http://localhost",
+    "http://127.0.0.1",
+    "file://",
+    "*",
 ]
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=origins,  # List of allowed origins
+    allow_origins=origins,
     allow_credentials=True,
-    allow_methods=["*"],  # Allow all methods (GET, POST, etc.)
-    allow_headers=["*"],  # Allow all headers
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
-
 
 # Ensure logs directory exists
 os.makedirs("logs", exist_ok=True)
@@ -66,6 +65,8 @@ def plot_to_base64(plt):
     image_base64 = base64.b64encode(buf.read()).decode('utf-8')
     buf.close()
     plt.clf()
+    plt.close('all')
+    gc.collect()
     return image_base64
 
 @app.post("/upload_file/")
@@ -73,21 +74,21 @@ async def upload_file(file: UploadFile = File(...)):
     try:
         logger.info(f"Attempting to upload file: {file.filename}, size: {file.size}")
         contents = await file.read()
-        # Log the first few lines of the file to check its content
         if contents:
             logger.info(f"File content preview: {contents[:200].decode('utf-8', errors='ignore')}")
         df = pd.read_csv(io.StringIO(contents.decode("utf-8")))
+        logger.info(f"File {file.filename} uploaded successfully. Shape: {df.shape}")
+        
+        # Check for NaN values
+        if df.isna().any().any():
+            logger.warning("Uploaded data contains NaN values")
+        
         data_store['data'] = df
-        logger.info(f"File {file.filename} uploaded successfully. Columns: {list(df.columns)}")
         return {"message": "File uploaded successfully", "columns": list(df.columns)}
     except Exception as e:
-        # Check if the error is related to file reading or parsing
-        if "CSV" in str(e):
-            logger.error(f"CSV Parsing Error for file {file.filename}: {e}")
-        else:
-            logger.error(f"Error processing file {file.filename}: {e}")
+        logger.error(f"Error processing file {file.filename}: {e}")
         raise HTTPException(status_code=400, detail=f"Error processing file: {e}")
-    
+
 @app.post("/fetch_finance_data/")
 async def fetch_finance_data(ticker: str = Form(...), start_date: str = Form(...), end_date: str = Form(...)):
     try:
@@ -95,23 +96,24 @@ async def fetch_finance_data(ticker: str = Form(...), start_date: str = Form(...
         start = datetime.strptime(start_date, "%Y-%m-%d")
         end = datetime.strptime(end_date, "%Y-%m-%d")
         
-        # Run yfinance download function in a separate thread
         loop = asyncio.get_event_loop()
-        df = await loop.run_in_executor(None, yf.download, ticker, start, end)
+        with asyncio.timeout(30):
+            df = await loop.run_in_executor(None, yf.download, ticker, start, end)
         
         if df.empty:
             raise HTTPException(status_code=404, detail=f"No data available for {ticker} between {start_date} and {end_date}")
 
         df.reset_index(inplace=True)
-        # data_store['data'] = df   # If you need to store data globally
+        df['Date'] = pd.to_datetime(df['Date'])  # Ensure date column is datetime
+        data_store['data'] = df
         
         logger.info(f"Successfully fetched {len(df)} rows of data for {ticker}")
         return {
             "message": "Data fetched successfully",
             "columns": list(df.columns),
-            "rows": len(df) if not df.empty else 0,
-            "first_date": df['Date'].iloc[0].strftime('%Y-%m-%d') if not df.empty else None,
-            "last_date": df['Date'].iloc[-1].strftime('%Y-%m-%d') if not df.empty else None
+            "rows": len(df),
+            "first_date": df['Date'].iloc[0].strftime('%Y-%m-%d'),
+            "last_date": df['Date'].iloc[-1].strftime('%Y-%m-%d')
         }
     except asyncio.TimeoutError:
         logger.error("Request timed out while fetching data.")
@@ -145,9 +147,7 @@ def eda(option: str = Form(...), column: Optional[str] = Form(None)):
             plt.title(f"Line Plot of {column}")
             plt.xlabel("Index")
             plt.ylabel(column)
-            image = plot_to_base64(plt)
-            logger.info(f"Line plot for column {column} generated")
-            return {"image": image}
+            return {"image": plot_to_base64(plt)}
 
         elif option == "seasonality_decompose":
             if column is None:
@@ -155,22 +155,16 @@ def eda(option: str = Form(...), column: Optional[str] = Form(None)):
             result = seasonal_decompose(df[column].dropna(), period=12, model="additive")
             plt.figure(figsize=(10, 5))
             result.plot()
-            image = plot_to_base64(plt)
-            logger.info(f"Seasonality decomposition for column {column} completed")
-            return {"image": image}
+            return {"image": plot_to_base64(plt)}
 
         elif option == "correlation_heatmap":
             plt.figure(figsize=(10, 8))
             sns.heatmap(df.corr(), annot=True, fmt=".2f", cmap="coolwarm")
             plt.title("Correlation Heatmap")
-            image = plot_to_base64(plt)
-            logger.info("Correlation heatmap generated")
-            return {"image": image}
+            return {"image": plot_to_base64(plt)}
 
         elif option == "summary_statistics":
-            summary = df.describe().to_dict()
-            logger.info("Summary statistics calculated")
-            return {"summary": summary}
+            return {"summary": df.describe().to_dict()}
 
         elif option == "rolling_mean":
             if column is None:
@@ -181,9 +175,7 @@ def eda(option: str = Form(...), column: Optional[str] = Form(None)):
             plt.plot(rolling_mean, label="Rolling Mean", linestyle="--")
             plt.legend()
             plt.title(f"Rolling Mean of {column}")
-            image = plot_to_base64(plt)
-            logger.info(f"Rolling mean plot for column {column} generated")
-            return {"image": image}
+            return {"image": plot_to_base64(plt)}
 
         elif option == "histogram":
             if column is None:
@@ -191,9 +183,7 @@ def eda(option: str = Form(...), column: Optional[str] = Form(None)):
             plt.figure(figsize=(10, 5))
             df[column].plot(kind='hist', bins=20)
             plt.title(f"Histogram of {column}")
-            image = plot_to_base64(plt)
-            logger.info(f"Histogram for column {column} generated")
-            return {"image": image}
+            return {"image": plot_to_base64(plt)}
 
         elif option == "boxplot":
             if column is None:
@@ -201,13 +191,11 @@ def eda(option: str = Form(...), column: Optional[str] = Form(None)):
             plt.figure(figsize=(10, 5))
             sns.boxplot(data=df, x=column)
             plt.title(f"Boxplot of {column}")
-            image = plot_to_base64(plt)
-            logger.info(f"Boxplot for column {column} generated")
-            return {"image": image}
+            return {"image": plot_to_base64(plt)}
 
         else:
-            logger.error(f"Invalid EDA option selected: {option}")
             raise HTTPException(status_code=400, detail="Invalid EDA option selected.")
+
     except Exception as e:
         logger.error(f"Error during EDA: {e}")
         raise HTTPException(status_code=500, detail=f"Error during EDA: {e}")
@@ -234,8 +222,9 @@ def feature_engineering(lags: Optional[int] = Form(None), rolling_window: Option
             for k in range(1, fourier_k + 1):
                 df[f"sin_{k}"] = np.sin(2 * np.pi * k * t / len(t))
                 df[f"cos_{k}"] = np.cos(2 * np.pi * k * t / len(t))
+        
+        logger.info(f"New columns after feature engineering: {list(df.columns)}")
         data_store['data'] = df
-        logger.info("Feature engineering applied successfully")
         return {"message": "Feature engineering applied successfully", "columns": list(df.columns)}
     except Exception as e:
         logger.error(f"Error during feature engineering: {e}")
@@ -263,8 +252,7 @@ def model_selection(model: str = Form(...), params: dict = Form(...), target_col
             plt.plot(model_fit.fittedvalues, label="Fitted", linestyle="--")
             plt.legend()
             plt.title("ARIMA Model Fit")
-            image = plot_to_base64(plt)
-            return {"summary": model_fit.summary().as_text(), "image": image}
+            return {"summary": model_fit.summary().as_text(), "image": plot_to_base64(plt)}
 
         elif model == "SARIMA":
             order = tuple(params.get("order", [1, 1, 1]))
@@ -276,21 +264,18 @@ def model_selection(model: str = Form(...), params: dict = Form(...), target_col
             plt.plot(model_fit.fittedvalues, label="Fitted", linestyle="--")
             plt.legend()
             plt.title("SARIMA Model Fit")
-            image = plot_to_base64(plt)
-            return {"summary": model_fit.summary().as_text(), "image": image}
+            return {"summary": model_fit.summary().as_text(), "image": plot_to_base64(plt)}
 
         elif model == "Prophet":
-            df_prophet = df[["date", target_column]].rename(columns={"date": "ds", target_column: "y"})
+            df_prophet = df[["Date", target_column]].rename(columns={"Date": "ds", target_column: "y"})
             prophet_model = Prophet()
             prophet_model.fit(df_prophet)
             future = prophet_model.make_future_dataframe(periods=30)
             forecast = prophet_model.predict(future)
-            plt.figure(figsize=(10, 5))
-            prophet_model.plot(forecast)
-            image = plot_to_base64(plt)
-            return {"forecast": forecast.to_dict(), "image": image}
+            fig = prophet_model.plot(forecast)
+            return {"forecast": forecast.to_dict(), "image": plot_to_base64(fig.gcf())}
 
-        elif model == "Boosting":
+        elif model == "GradientBoosting":
             X = df.drop(columns=[target_column]).select_dtypes(include=['float', 'int']).fillna(0)
             y = df[target_column].fillna(0)
             X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
@@ -301,65 +286,15 @@ def model_selection(model: str = Form(...), params: dict = Form(...), target_col
             plt.plot(y_test.values, label="True Values")
             plt.plot(predictions, label="Predictions", linestyle="--")
             plt.legend()
-            plt.title("Boosting Model Predictions")
-            image = plot_to_base64(plt)
-            rmse = np.sqrt(mean_squared_error(y_test, predictions))
-            r2 = r2_score(y_test, predictions)
-            return {"predictions": predictions.tolist(), "image": image, "rmse": rmse, "r2": r2, "feature_importances": gb_model.feature_importances_.tolist()}
-
-        elif model == "Random Forest":
-            X = df.drop(columns=[target_column]).select_dtypes(include=['float', 'int']).fillna(0)
-            y = df[target_column].fillna(0)
-            X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
-            rf_model = RandomForestRegressor(**params)
-            rf_model.fit(X_train, y_train)
-            predictions = rf_model.predict(X_test)
-            plt.figure(figsize=(10, 5))
-            plt.plot(y_test.values, label="True Values")
-            plt.plot(predictions, label="Predictions", linestyle="--")
-            plt.legend()
-            plt.title("Random Forest Model Predictions")
-            image = plot_to_base64(plt)
-            rmse = np.sqrt(mean_squared_error(y_test, predictions))
-            r2 = r2_score(y_test, predictions)
-            return {"predictions": predictions.tolist(), "image": image, "rmse": rmse, "r2": r2, "feature_importances": rf_model.feature_importances_.tolist()}
-
-        elif model == "LSTM":
-            # LSTM requires reshaping the data for time-series modeling
-            X = df.drop(columns=[target_column]).select_dtypes(include=['float', 'int']).fillna(0).values
-            y = df[target_column].fillna(0).values
-            X = X.reshape((X.shape[0], X.shape[1], 1))  # Reshaping for LSTM
-            X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
-
-            lstm_model = Sequential()
-            lstm_model.add(LSTM(50, activation='relu', input_shape=(X_train.shape[1], 1)))
-            lstm_model.add(Dense(1))
-            lstm_model.compile(optimizer='adam', loss='mean_squared_error')
-            lstm_model.fit(X_train, y_train, epochs=10, batch_size=32, verbose=1)
-            predictions = lstm_model.predict(X_test)
-
-            plt.figure(figsize=(10, 5))
-            plt.plot(y_test, label="True Values")
-            plt.plot(predictions, label="Predictions", linestyle="--")
-            plt.legend()
-            plt.title("LSTM Model Predictions")
-            image = plot_to_base64(plt)
-            rmse = np.sqrt(mean_squared_error(y_test, predictions))
-            return {"predictions": predictions.tolist(), "image": image, "rmse": rmse}
+            plt.title("Gradient Boosting Model Predictions")
+            return {"predictions": predictions.tolist(), "image": plot_to_base64(plt)}
 
         else:
             raise HTTPException(status_code=400, detail="Invalid model selected.")
 
-    except ValueError as ve:
-        logger.error(f"Invalid input for model parameters: {ve}")
-        raise HTTPException(status_code=400, detail=f"Invalid input for model parameters: {ve}")
-    except KeyError as ke:
-        logger.error(f"Missing or invalid column: {ke}")
-        raise HTTPException(status_code=400, detail=f"Missing or invalid column: {ke}")
     except Exception as e:
         logger.error(f"An error occurred while running the model: {e}")
         raise HTTPException(status_code=500, detail=f"An error occurred while running the model: {e}")
-
 
 @app.get("/health")
 def health_check():
@@ -367,5 +302,5 @@ def health_check():
     return {"status": "ok"}
 
 if __name__ == "__main__":
-    logger.info("Starting the application")
-    uvicorn.run(app, host="0.0.0.0", port=8000)
+    logger.info("Starting the application in debug mode")
+    uvicorn.run(app, host="0.0.0.0", port=8000, reload=True, log_level="debug")

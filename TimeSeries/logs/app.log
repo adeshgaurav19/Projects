@@ -154,3 +154,62 @@
 11/
 2024-12-26 03:52:56,226 - timeseriesapp - INFO - File Electric_Production.csv uploaded successfully. Columns: ['DATE', 'IPG2211A2N']
 2024-12-26 03:52:58,887 - timeseriesapp - INFO - Performing EDA with option: line_plot, column: DATE
+2024-12-27 02:46:12,733 - timeseriesapp - INFO - Fetching data for ticker: AAPL, from 2023-01-01 to 2023-12-31
+2024-12-27 02:46:13,196 - timeseriesapp - INFO - Successfully fetched 250 rows of data for AAPL
+2024-12-27 02:49:28,062 - timeseriesapp - INFO - Fetching data for ticker: AAPL, from 2023-01-01 to 2023-12-31
+2024-12-27 02:49:28,156 - timeseriesapp - INFO - Successfully fetched 250 rows of data for AAPL
+2024-12-27 02:49:28,177 - timeseriesapp - INFO - Performing EDA with option: line_plot, column: Close
+2024-12-27 02:49:28,177 - timeseriesapp - ERROR - Error during EDA: 400: No data available. Please upload or fetch data first.
+2024-12-27 02:49:45,927 - timeseriesapp - INFO - Performing EDA with option: line_plot, column: Close,AAPL
+2024-12-27 02:49:45,928 - timeseriesapp - ERROR - Error during EDA: 400: No data available. Please upload or fetch data first.
+2024-12-27 02:51:46,011 - timeseriesapp - INFO - Attempting to upload file: Electric_Production.csv, size: 7318
+2024-12-27 02:51:46,012 - timeseriesapp - INFO - File content preview: DATE,IPG2211A2N
+1/1/1985,72.5052
+2/1/1985,70.672
+3/1/1985,62.4502
+4/1/1985,57.4714
+5/1/1985,55.3151
+6/1/1985,58.0904
+7/1/1985,62.6202
+8/1/1985,63.2485
+9/1/1985,60.5846
+10/1/1985,56.3154
+11/
+2024-12-27 02:51:46,042 - timeseriesapp - INFO - File Electric_Production.csv uploaded successfully. Columns: ['DATE', 'IPG2211A2N']
+2024-12-27 02:51:51,535 - timeseriesapp - INFO - Performing EDA with option: line_plot, column: IPG2211A2N
+2024-12-27 02:59:21,050 - timeseriesapp - INFO - Fetching data for ticker: AAPL, from 2023-01-01 to 2023-12-31
+2024-12-27 02:59:21,636 - timeseriesapp - INFO - Successfully fetched 250 rows of data for AAPL
+2024-12-27 02:59:21,650 - timeseriesapp - INFO - Performing EDA with option: line_plot, column: Close
+2024-12-27 02:59:21,651 - timeseriesapp - ERROR - Error during EDA: 400: No data available. Please upload or fetch data first.
+2024-12-27 02:59:29,317 - timeseriesapp - INFO - Attempting to upload file: Electric_Production.csv, size: 7318
+2024-12-27 02:59:29,318 - timeseriesapp - INFO - File content preview: DATE,IPG2211A2N
+1/1/1985,72.5052
+2/1/1985,70.672
+3/1/1985,62.4502
+4/1/1985,57.4714
+5/1/1985,55.3151
+6/1/1985,58.0904
+7/1/1985,62.6202
+8/1/1985,63.2485
+9/1/1985,60.5846
+10/1/1985,56.3154
+11/
+2024-12-27 02:59:29,334 - timeseriesapp - INFO - File Electric_Production.csv uploaded successfully. Columns: ['DATE', 'IPG2211A2N']
+2024-12-27 02:59:32,132 - timeseriesapp - INFO - Performing EDA with option: line_plot, column: DATE
+2024-12-27 03:09:50,190 - timeseriesapp - INFO - Fetching data for ticker: AAPL, from 2023-01-01 to 2023-12-31
+2024-12-27 03:09:50,193 - timeseriesapp - ERROR - Unexpected error fetching data: 'Timeout' object does not support the context manager protocol
+2024-12-27 03:09:58,191 - timeseriesapp - INFO - Attempting to upload file: Electric_Production.csv, size: 7318
+2024-12-27 03:09:58,192 - timeseriesapp - INFO - File content preview: DATE,IPG2211A2N
+1/1/1985,72.5052
+2/1/1985,70.672
+3/1/1985,62.4502
+4/1/1985,57.4714
+5/1/1985,55.3151
+6/1/1985,58.0904
+7/1/1985,62.6202
+8/1/1985,63.2485
+9/1/1985,60.5846
+10/1/1985,56.3154
+11/
+2024-12-27 03:09:58,208 - timeseriesapp - INFO - File Electric_Production.csv uploaded successfully. Shape: (397, 2)
+2024-12-27 03:10:03,357 - timeseriesapp - INFO - Performing EDA with option: line_plot, column: IPG2211A2N

@@ -1,0 +1,2110 @@
+<?xml version='1.0' encoding='utf-8' ?>
+
+<!-- build 20243.24.1010.1014                               -->
+<workbook original-version='18.1' source-build='2024.3.0 (20243.24.1010.1014)' source-platform='mac' version='18.1' xml:base='https://public.tableau.com' xmlns:user='http://www.tableausoftware.com/xml/user'>
+  <document-format-change-manifest>
+    <AccessibleZoneTabOrder />
+    <AnimationOnByDefault />
+    <AutoCreateAndUpdateDSDPhoneLayouts />
+    <BasicButtonObject />
+    <BasicButtonObjectTextSupport />
+    <MapboxVectorStylesAndLayers />
+    <MarkAnimation />
+    <ObjectModelEncapsulateLegacy />
+    <ObjectModelExtractV2 />
+    <ObjectModelTableType />
+    <SchemaViewerObjectModel />
+    <SetMembershipControl />
+    <SheetIdentifierTracking />
+    <SortTagCleanup />
+    <_.fcp.VConnDownstreamExtractsWithWarnings.true...VConnDownstreamExtractsWithWarnings />
+    <WindowsPersistSimpleIdentifiers />
+    <WorksheetBackgroundTransparency />
+    <ZoneBackgroundTransparency />
+  </document-format-change-manifest>
+  <repository-location derived-from='https://haproxy-traffic-splitter/workbooks/NetflixDashboard_17413855811130?rev=1.2' id='EML2425-Tableau-Adesh' path='/workbooks' revision='1.2' />
+  <preferences>
+    <preference name='ui.encoding.shelf.height' value='24' />
+    <preference name='ui.shelf.height' value='26' />
+  </preferences>
+  <datasources>
+    <datasource caption='netflix_titles' inline='true' name='federated.1c7k9390kod6to102wt1w1y9yzxf' version='18.1'>
+      <connection class='federated'>
+        <named-connections>
+          <named-connection caption='netflix_titles' name='textscan.0g0n7e51ypypo8193jyyh0papobm'>
+            <connection class='textscan' directory='/Users/aniket/Desktop' filename='netflix_titles.csv' server='' workgroup-auth-mode='as-is' />
+          </named-connection>
+        </named-connections>
+        <relation connection='textscan.0g0n7e51ypypo8193jyyh0papobm' name='netflix_titles.csv' table='[netflix_titles#csv]' type='table'>
+          <columns character-set='UTF-8' header='yes' locale='en_IN' separator=','>
+            <column datatype='integer' name='show_id' ordinal='0' />
+            <column datatype='string' name='type' ordinal='1' />
+            <column datatype='string' name='title' ordinal='2' />
+            <column datatype='string' name='director' ordinal='3' />
+            <column datatype='string' name='cast' ordinal='4' />
+            <column datatype='string' name='country' ordinal='5' />
+            <column datatype='date' date-parse-format='MMMM dd, yyyy' name='date_added' ordinal='6' />
+            <column datatype='integer' name='release_year' ordinal='7' />
+            <column datatype='string' name='rating' ordinal='8' />
+            <column datatype='string' name='duration' ordinal='9' />
+            <column datatype='string' name='listed_in' ordinal='10' />
+            <column datatype='string' name='description' ordinal='11' />
+          </columns>
+        </relation>
+        <metadata-records>
+          <metadata-record class='capability'>
+            <remote-name />
+            <remote-type>0</remote-type>
+            <parent-name>[netflix_titles.csv]</parent-name>
+            <remote-alias />
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='character-set'>&quot;UTF-8&quot;</attribute>
+              <attribute datatype='string' name='collation'>&quot;en_GB&quot;</attribute>
+              <attribute datatype='string' name='currency'>&quot;₹&quot;</attribute>
+              <attribute datatype='string' name='field-delimiter'>&quot;,&quot;</attribute>
+              <attribute datatype='string' name='header-row'>&quot;true&quot;</attribute>
+              <attribute datatype='string' name='locale'>&quot;en_IN&quot;</attribute>
+              <attribute datatype='string' name='single-char'>&quot;&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>show_id</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[show_id]</local-name>
+            <parent-name>[netflix_titles.csv]</parent-name>
+            <remote-alias>show_id</remote-alias>
+            <ordinal>0</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[netflix_titles.csv_29523FE54D2846DFB91656DFE0639443]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>type</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[type]</local-name>
+            <parent-name>[netflix_titles.csv]</parent-name>
+            <remote-alias>type</remote-alias>
+            <ordinal>1</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RGB' />
+            <object-id>[netflix_titles.csv_29523FE54D2846DFB91656DFE0639443]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>title</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[title]</local-name>
+            <parent-name>[netflix_titles.csv]</parent-name>
+            <remote-alias>title</remote-alias>
+            <ordinal>2</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RGB' />
+            <object-id>[netflix_titles.csv_29523FE54D2846DFB91656DFE0639443]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>director</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[director]</local-name>
+            <parent-name>[netflix_titles.csv]</parent-name>
+            <remote-alias>director</remote-alias>
+            <ordinal>3</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RGB' />
+            <object-id>[netflix_titles.csv_29523FE54D2846DFB91656DFE0639443]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>cast</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[cast]</local-name>
+            <parent-name>[netflix_titles.csv]</parent-name>
+            <remote-alias>cast</remote-alias>
+            <ordinal>4</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RGB' />
+            <object-id>[netflix_titles.csv_29523FE54D2846DFB91656DFE0639443]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>country</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[country]</local-name>
+            <parent-name>[netflix_titles.csv]</parent-name>
+            <remote-alias>country</remote-alias>
+            <ordinal>5</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RGB' />
+            <object-id>[netflix_titles.csv_29523FE54D2846DFB91656DFE0639443]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>date_added</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[date_added]</local-name>
+            <parent-name>[netflix_titles.csv]</parent-name>
+            <remote-alias>date_added</remote-alias>
+            <ordinal>6</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RGB' />
+            <object-id>[netflix_titles.csv_29523FE54D2846DFB91656DFE0639443]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>release_year</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[release_year]</local-name>
+            <parent-name>[netflix_titles.csv]</parent-name>
+            <remote-alias>release_year</remote-alias>
+            <ordinal>7</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[netflix_titles.csv_29523FE54D2846DFB91656DFE0639443]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>rating</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[rating]</local-name>
+            <parent-name>[netflix_titles.csv]</parent-name>
+            <remote-alias>rating</remote-alias>
+            <ordinal>8</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RGB' />
+            <object-id>[netflix_titles.csv_29523FE54D2846DFB91656DFE0639443]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>duration</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[duration]</local-name>
+            <parent-name>[netflix_titles.csv]</parent-name>
+            <remote-alias>duration</remote-alias>
+            <ordinal>9</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RGB' />
+            <object-id>[netflix_titles.csv_29523FE54D2846DFB91656DFE0639443]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>listed_in</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[listed_in]</local-name>
+            <parent-name>[netflix_titles.csv]</parent-name>
+            <remote-alias>listed_in</remote-alias>
+            <ordinal>10</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RGB' />
+            <object-id>[netflix_titles.csv_29523FE54D2846DFB91656DFE0639443]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>description</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[description]</local-name>
+            <parent-name>[netflix_titles.csv]</parent-name>
+            <remote-alias>description</remote-alias>
+            <ordinal>11</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RGB' />
+            <object-id>[netflix_titles.csv_29523FE54D2846DFB91656DFE0639443]</object-id>
+          </metadata-record>
+        </metadata-records>
+      </connection>
+      <aliases enabled='yes' />
+      <column caption='DurationMinutes' datatype='integer' name='[Calculation_2933180426232176640]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='INT(LEFT([duration], FIND([duration], &quot; &quot;) - 1))' />
+      </column>
+      <column caption='Seasons' datatype='integer' name='[Calculation_2933180426232320001]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='INT(LEFT([duration], FIND([duration], &quot; &quot;) - 1))' />
+      </column>
+      <column caption='Number of Titles' datatype='integer' name='[Calculation_2933180426233380866]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='COUNTD([title])' />
+      </column>
+      <column caption='Genre' datatype='string' name='[Calculation_608197110515818497]' role='dimension' type='nominal'>
+        <calculation class='tableau' formula='SPLIT([listed_in], &quot;,&quot;, 1)' />
+      </column>
+      <column aggregation='None' caption='DurationMinutes (bin)' datatype='integer' name='[DurationMinutes (bin)]' role='dimension' type='ordinal'>
+        <calculation class='bin' decimals='1' formula='[Calculation_2933180426232176640]' peg='0' size='15' />
+      </column>
+      <column caption='netflix_titles.csv' datatype='table' name='[__tableau_internal_object_id__].[netflix_titles.csv_29523FE54D2846DFB91656DFE0639443]' role='measure' type='quantitative' />
+      <column caption='Cast' datatype='string' name='[cast]' role='dimension' type='nominal' />
+      <column caption='Country' datatype='string' name='[country]' role='dimension' semantic-role='[Country].[ISO3166_2]' type='nominal' />
+      <column caption='Date Added' datatype='date' datatype-customized='true' name='[date_added]' role='dimension' type='ordinal' />
+      <column caption='Description' datatype='string' name='[description]' role='dimension' type='nominal' />
+      <column caption='Director' datatype='string' name='[director]' role='dimension' type='nominal' />
+      <column caption='Duration' datatype='string' name='[duration]' role='dimension' type='nominal' />
+      <column caption='Listed In' datatype='string' name='[listed_in]' role='dimension' type='nominal' />
+      <column caption='Rating' datatype='string' name='[rating]' role='dimension' type='nominal' />
+      <column caption='Release Year' datatype='integer' name='[release_year]' role='dimension' type='quantitative' />
+      <column caption='Show Id' datatype='integer' name='[show_id]' role='dimension' type='ordinal' />
+      <column aggregation='CountD' caption='Title' datatype='string' datatype-customized='true' name='[title]' role='dimension' type='nominal' />
+      <column caption='Type' datatype='string' name='[type]' role='dimension' type='nominal' />
+      <column-instance column='[type]' derivation='Attribute' name='[attr:type:nk]' pivot='key' type='nominal' />
+      <column-instance column='[title]' derivation='CountD' name='[ctd:title:ok]' pivot='key' type='ordinal' />
+      <column-instance column='[Calculation_608197110515818497]' derivation='None' name='[none:Calculation_608197110515818497:nk]' pivot='key' type='nominal' />
+      <column-instance column='[type]' derivation='None' name='[none:type:nk]' pivot='key' type='nominal' />
+      <column-instance column='[date_added]' derivation='Year' name='[yr:date_added:ok]' pivot='key' type='ordinal' />
+      <group caption='Action (Country)' hidden='true' name='[Action (Country)]' name-style='unqualified' user:auto-column='sheet_link'>
+        <groupfilter function='crossjoin'>
+          <groupfilter function='level-members' level='[country]' />
+        </groupfilter>
+      </group>
+      <group caption='Action (Genre)' hidden='true' name='[Action (Genre)]' name-style='unqualified' user:auto-column='sheet_link'>
+        <groupfilter function='crossjoin'>
+          <groupfilter function='level-members' level='[Calculation_608197110515818497]' />
+        </groupfilter>
+      </group>
+      <group caption='Action (Genre,Duration,Rating,Title,Type)' hidden='true' name='[Action (Genre,Duration,Rating,Title,Type)]' name-style='unqualified' user:auto-column='sheet_link'>
+        <groupfilter function='crossjoin'>
+          <groupfilter function='level-members' level='[Calculation_608197110515818497]' />
+          <groupfilter function='level-members' level='[duration]' />
+          <groupfilter function='level-members' level='[rating]' />
+          <groupfilter function='level-members' level='[title]' />
+          <groupfilter function='level-members' level='[type]' />
+        </groupfilter>
+      </group>
+      <group caption='Action (Genre,YEAR(Date Added),Duration,Title,Type)' hidden='true' name='[Action (Genre,YEAR(Date Added),Duration,Title,Type)]' name-style='unqualified' user:auto-column='sheet_link'>
+        <groupfilter function='crossjoin'>
+          <groupfilter function='level-members' level='[Calculation_608197110515818497]' />
+          <groupfilter function='level-members' level='[yr:date_added:ok]' />
+          <groupfilter function='level-members' level='[duration]' />
+          <groupfilter function='level-members' level='[title]' />
+          <groupfilter function='level-members' level='[type]' />
+        </groupfilter>
+      </group>
+      <group caption='Action (Rating)' hidden='true' name='[Action (Rating)]' name-style='unqualified' user:auto-column='sheet_link'>
+        <groupfilter function='crossjoin'>
+          <groupfilter function='level-members' level='[rating]' />
+        </groupfilter>
+      </group>
+      <group caption='Action (Type)' hidden='true' name='[Action (Type)]' name-style='unqualified' user:auto-column='sheet_link'>
+        <groupfilter function='crossjoin'>
+          <groupfilter function='level-members' level='[type]' />
+        </groupfilter>
+      </group>
+      <extract _.fcp.VConnDownstreamExtractsWithWarnings.true...user-specific='false' count='-1' enabled='true' object-id='' units='records'>
+        <connection access_mode='readonly' author-locale='en_US' class='hyper' dbname='Data/tableau-temp/TEMP_0jek96l0080d0211h2ec60explia.hyper' default-settings='hyper' schema='Extract' sslmode='' tablename='Extract' update-time='' username='tableau_internal_user'>
+          <relation name='Extract' table='[Extract].[Extract]' type='table'>
+            <columns>
+              <column datatype='date' date-parse-format='MMMM dd, yyyy' name='date_added' />
+            </columns>
+          </relation>
+          <metadata-records>
+            <metadata-record class='column'>
+              <remote-name>show_id</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[show_id]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>show_id</remote-alias>
+              <ordinal>0</ordinal>
+              <family>netflix_titles.csv</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>6234</approx-count>
+              <contains-null>true</contains-null>
+              <object-id>[netflix_titles.csv_29523FE54D2846DFB91656DFE0639443]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>type</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[type]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>type</remote-alias>
+              <ordinal>1</ordinal>
+              <family>netflix_titles.csv</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>2</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='LEN_RGB' />
+              <object-id>[netflix_titles.csv_29523FE54D2846DFB91656DFE0639443]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>title</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[title]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>title</remote-alias>
+              <ordinal>2</ordinal>
+              <family>netflix_titles.csv</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>6015</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='LEN_RGB' />
+              <object-id>[netflix_titles.csv_29523FE54D2846DFB91656DFE0639443]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>director</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[director]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>director</remote-alias>
+              <ordinal>3</ordinal>
+              <family>netflix_titles.csv</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>2119</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='LEN_RGB' />
+              <object-id>[netflix_titles.csv_29523FE54D2846DFB91656DFE0639443]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>cast</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[cast]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>cast</remote-alias>
+              <ordinal>4</ordinal>
+              <family>netflix_titles.csv</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>4511</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='LEN_RGB' />
+              <object-id>[netflix_titles.csv_29523FE54D2846DFB91656DFE0639443]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>country</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[country]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>country</remote-alias>
+              <ordinal>5</ordinal>
+              <family>netflix_titles.csv</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>328</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='LEN_RGB' />
+              <object-id>[netflix_titles.csv_29523FE54D2846DFB91656DFE0639443]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>date_added</remote-name>
+              <remote-type>7</remote-type>
+              <local-name>[date_added]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>date_added</remote-alias>
+              <ordinal>6</ordinal>
+              <family>netflix_titles.csv</family>
+              <local-type>date</local-type>
+              <aggregation>Year</aggregation>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='LEN_RGB' />
+              <object-id>[netflix_titles.csv_29523FE54D2846DFB91656DFE0639443]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>release_year</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[release_year]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>release_year</remote-alias>
+              <ordinal>7</ordinal>
+              <family>netflix_titles.csv</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>65</approx-count>
+              <contains-null>true</contains-null>
+              <object-id>[netflix_titles.csv_29523FE54D2846DFB91656DFE0639443]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>rating</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[rating]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>rating</remote-alias>
+              <ordinal>8</ordinal>
+              <family>netflix_titles.csv</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>14</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='LEN_RGB' />
+              <object-id>[netflix_titles.csv_29523FE54D2846DFB91656DFE0639443]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>duration</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[duration]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>duration</remote-alias>
+              <ordinal>9</ordinal>
+              <family>netflix_titles.csv</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>202</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='LEN_RGB' />
+              <object-id>[netflix_titles.csv_29523FE54D2846DFB91656DFE0639443]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>listed_in</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[listed_in]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>listed_in</remote-alias>
+              <ordinal>10</ordinal>
+              <family>netflix_titles.csv</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>373</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='LEN_RGB' />
+              <object-id>[netflix_titles.csv_29523FE54D2846DFB91656DFE0639443]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>description</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[description]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>description</remote-alias>
+              <ordinal>11</ordinal>
+              <family>netflix_titles.csv</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>6234</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='LEN_RGB' />
+              <object-id>[netflix_titles.csv_29523FE54D2846DFB91656DFE0639443]</object-id>
+            </metadata-record>
+          </metadata-records>
+        </connection>
+      </extract>
+      <layout dim-ordering='alphabetic' measure-ordering='alphabetic' show-structure='true' />
+      <style>
+        <style-rule element='mark'>
+          <encoding attr='color' field='[attr:type:nk]' type='palette'>
+            <map to='#da323f'>
+              <bucket>&quot;Movie&quot;</bucket>
+            </map>
+            <map to='#f05c4d'>
+              <bucket>&quot;TV Show&quot;</bucket>
+            </map>
+          </encoding>
+          <encoding attr='color' field='[none:Calculation_608197110515818497:nk]' type='palette'>
+            <map to='#499894'>
+              <bucket>&quot;Crime TV Shows&quot;</bucket>
+            </map>
+            <map to='#499894'>
+              <bucket>&quot;Thrillers&quot;</bucket>
+            </map>
+            <map to='#4e79a7'>
+              <bucket>&quot;Action &amp; Adventure&quot;</bucket>
+            </map>
+            <map to='#4e79a7'>
+              <bucket>&quot;Reality TV&quot;</bucket>
+            </map>
+            <map to='#59a14f'>
+              <bucket>&quot;Children &amp; Family Movies&quot;</bucket>
+            </map>
+            <map to='#59a14f'>
+              <bucket>&quot;Spanish-Language TV Shows&quot;</bucket>
+            </map>
+            <map to='#79706e'>
+              <bucket>&quot;Dramas&quot;</bucket>
+            </map>
+            <map to='#79706e'>
+              <bucket>&quot;TV Horror&quot;</bucket>
+            </map>
+            <map to='#86bcb6'>
+              <bucket>&quot;Cult Movies&quot;</bucket>
+            </map>
+            <map to='#86bcb6'>
+              <bucket>&quot;TV Action &amp; Adventure&quot;</bucket>
+            </map>
+            <map to='#8cd17d'>
+              <bucket>&quot;Classic &amp; Cult TV&quot;</bucket>
+            </map>
+            <map to='#8cd17d'>
+              <bucket>&quot;Sports Movies&quot;</bucket>
+            </map>
+            <map to='#9d7660'>
+              <bucket>&quot;Movies&quot;</bucket>
+            </map>
+            <map to='#a0cbe8'>
+              <bucket>&quot;Anime Features&quot;</bucket>
+            </map>
+            <map to='#a0cbe8'>
+              <bucket>&quot;Romantic Movies&quot;</bucket>
+            </map>
+            <map to='#b07aa1'>
+              <bucket>&quot;International TV Shows&quot;</bucket>
+            </map>
+            <map to='#b6992d'>
+              <bucket>&quot;Classic Movies&quot;</bucket>
+            </map>
+            <map to='#b6992d'>
+              <bucket>&quot;Stand-Up Comedy&quot;</bucket>
+            </map>
+            <map to='#bab0ac'>
+              <bucket>&quot;Horror Movies&quot;</bucket>
+            </map>
+            <map to='#bab0ac'>
+              <bucket>&quot;TV Sci-Fi &amp; Fantasy&quot;</bucket>
+            </map>
+            <map to='#d37295'>
+              <bucket>&quot;Independent Movies&quot;</bucket>
+            </map>
+            <map to='#d37295'>
+              <bucket>&quot;TV Shows&quot;</bucket>
+            </map>
+            <map to='#d4a6c8'>
+              <bucket>&quot;Kids&apos; TV&quot;</bucket>
+            </map>
+            <map to='#d7b5a6'>
+              <bucket>&quot;Music &amp; Musicals&quot;</bucket>
+            </map>
+            <map to='#e15759'>
+              <bucket>&quot;Documentaries&quot;</bucket>
+            </map>
+            <map to='#e15759'>
+              <bucket>&quot;TV Comedies&quot;</bucket>
+            </map>
+            <map to='#f1ce63'>
+              <bucket>&quot;Comedies&quot;</bucket>
+            </map>
+            <map to='#f1ce63'>
+              <bucket>&quot;Stand-Up Comedy &amp; Talk Shows&quot;</bucket>
+            </map>
+            <map to='#f28e2b'>
+              <bucket>&quot;Anime Series&quot;</bucket>
+            </map>
+            <map to='#f28e2b'>
+              <bucket>&quot;Romantic TV Shows&quot;</bucket>
+            </map>
+            <map to='#fabfd2'>
+              <bucket>&quot;International Movies&quot;</bucket>
+            </map>
+            <map to='#ff9d9a'>
+              <bucket>&quot;Docuseries&quot;</bucket>
+            </map>
+            <map to='#ff9d9a'>
+              <bucket>&quot;TV Dramas&quot;</bucket>
+            </map>
+            <map to='#ffbe7d'>
+              <bucket>&quot;British TV Shows&quot;</bucket>
+            </map>
+            <map to='#ffbe7d'>
+              <bucket>&quot;Sci-Fi &amp; Fantasy&quot;</bucket>
+            </map>
+          </encoding>
+          <encoding attr='color' field='[ctd:title:ok]' type='palette'>
+            <map to='#499894'>
+              <bucket>218</bucket>
+            </map>
+            <map to='#4e79a7'>
+              <bucket>2</bucket>
+            </map>
+            <map to='#59a14f'>
+              <bucket>143</bucket>
+            </map>
+            <map to='#79706e'>
+              <bucket>1694</bucket>
+            </map>
+            <map to='#86bcb6'>
+              <bucket>286</bucket>
+            </map>
+            <map to='#8cd17d'>
+              <bucket>149</bucket>
+            </map>
+            <map to='#a0cbe8'>
+              <bucket>7</bucket>
+            </map>
+            <map to='#b6992d'>
+              <bucket>169</bucket>
+            </map>
+            <map to='#bab0ac'>
+              <bucket>2014</bucket>
+            </map>
+            <map to='#e15759'>
+              <bucket>507</bucket>
+            </map>
+            <map to='#f1ce63'>
+              <bucket>184</bucket>
+            </map>
+            <map to='#f28e2b'>
+              <bucket>37</bucket>
+            </map>
+            <map to='#ff9d9a'>
+              <bucket>700</bucket>
+            </map>
+            <map to='#ffbe7d'>
+              <bucket>95</bucket>
+            </map>
+          </encoding>
+          <encoding attr='color' field='[none:type:nk]' type='palette'>
+            <map to='#da323f'>
+              <bucket>&quot;Movie&quot;</bucket>
+            </map>
+            <map to='#f05c4d'>
+              <bucket>&quot;TV Show&quot;</bucket>
+            </map>
+          </encoding>
+        </style-rule>
+      </style>
+      <semantic-values>
+        <semantic-value key='[Country].[Name]' value='&quot;India&quot;' />
+      </semantic-values>
+      <object-graph>
+        <objects>
+          <object caption='netflix_titles.csv' id='netflix_titles.csv_29523FE54D2846DFB91656DFE0639443'>
+            <properties context=''>
+              <relation connection='textscan.0g0n7e51ypypo8193jyyh0papobm' name='netflix_titles.csv' table='[netflix_titles#csv]' type='table'>
+                <columns character-set='UTF-8' header='yes' locale='en_IN' separator=','>
+                  <column datatype='integer' name='show_id' ordinal='0' />
+                  <column datatype='string' name='type' ordinal='1' />
+                  <column datatype='string' name='title' ordinal='2' />
+                  <column datatype='string' name='director' ordinal='3' />
+                  <column datatype='string' name='cast' ordinal='4' />
+                  <column datatype='string' name='country' ordinal='5' />
+                  <column datatype='date' date-parse-format='MMMM dd, yyyy' name='date_added' ordinal='6' />
+                  <column datatype='integer' name='release_year' ordinal='7' />
+                  <column datatype='string' name='rating' ordinal='8' />
+                  <column datatype='string' name='duration' ordinal='9' />
+                  <column datatype='string' name='listed_in' ordinal='10' />
+                  <column datatype='string' name='description' ordinal='11' />
+                </columns>
+              </relation>
+            </properties>
+            <properties context='extract'>
+              <relation name='Extract' table='[Extract].[Extract]' type='table'>
+                <columns>
+                  <column datatype='date' date-parse-format='MMMM dd, yyyy' name='date_added' />
+                </columns>
+              </relation>
+            </properties>
+          </object>
+        </objects>
+      </object-graph>
+    </datasource>
+  </datasources>
+  <mapsources>
+    <mapsource name='Tableau' />
+  </mapsources>
+  <actions>
+    <action caption='Filter 1 (generated)' name='[Action1_32E8EFA489464E51B0AED903FC48A8D7]'>
+      <activation auto-clear='true' type='on-select' />
+      <source dashboard='Netflix Dashboard' type='sheet' worksheet='Total Movies &amp; Shows By Country' />
+      <command command='tsc:tsl-filter'>
+        <param name='special-fields' value='all' />
+        <param name='target' value='Netflix Dashboard' />
+      </command>
+    </action>
+    <action caption='Filter 2 (generated)' name='[Action2_AFD6AE08475D44B6BAEE9F9E57207A7F]'>
+      <activation auto-clear='true' type='on-select' />
+      <source dashboard='Netflix Dashboard' type='sheet' worksheet='Top 10 Genre' />
+      <command command='tsc:tsl-filter'>
+        <param name='special-fields' value='all' />
+        <param name='target' value='Netflix Dashboard' />
+      </command>
+    </action>
+    <action caption='Filter 3 (generated)' name='[Action3_07570728EBDA452BB6169E3C527FE0D7]'>
+      <activation auto-clear='true' type='on-select' />
+      <source dashboard='Netflix Dashboard' type='sheet' worksheet='Distribution' />
+      <command command='tsc:tsl-filter'>
+        <param name='special-fields' value='all' />
+        <param name='target' value='Netflix Dashboard' />
+      </command>
+    </action>
+    <action caption='Filter 4 (generated)' name='[Action4_4A43F6E3C15C484AA799A499A63642EF]'>
+      <activation auto-clear='true' type='on-select' />
+      <source dashboard='Netflix Dashboard' type='sheet' worksheet='Ratings' />
+      <command command='tsc:tsl-filter'>
+        <param name='special-fields' value='all' />
+        <param name='target' value='Netflix Dashboard' />
+      </command>
+    </action>
+  </actions>
+  <worksheets>
+    <worksheet name='Distribution'>
+      <repository-location derived-from='https://haproxy-traffic-splitter/workbooks/NetflixDashboard_17413855811130/Distribution?rev=' id='Distribution' path='/workbooks/NetflixDashboard_17413855811130' revision='' />
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='netflix_titles' name='federated.1c7k9390kod6to102wt1w1y9yzxf' />
+          </datasources>
+          <datasource-dependencies datasource='federated.1c7k9390kod6to102wt1w1y9yzxf'>
+            <column-instance column='[__tableau_internal_object_id__].[netflix_titles.csv_29523FE54D2846DFB91656DFE0639443]' derivation='Count' name='[__tableau_internal_object_id__].[cnt:netflix_titles.csv_29523FE54D2846DFB91656DFE0639443:qk]' pivot='key' type='quantitative' />
+            <column caption='netflix_titles.csv' datatype='table' name='[__tableau_internal_object_id__].[netflix_titles.csv_29523FE54D2846DFB91656DFE0639443]' role='measure' type='quantitative' />
+            <column-instance column='[__tableau_internal_object_id__].[netflix_titles.csv_29523FE54D2846DFB91656DFE0639443]' derivation='Count' name='[__tableau_internal_object_id__].[pcto:cnt:netflix_titles.csv_29523FE54D2846DFB91656DFE0639443:qk]' pivot='key' type='quantitative'>
+              <table-calc ordering-type='Rows' type='PctTotal' />
+            </column-instance>
+            <column-instance column='[release_year]' derivation='None' name='[none:release_year:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[type]' derivation='None' name='[none:type:nk]' pivot='key' type='nominal' />
+            <column caption='Rating' datatype='string' name='[rating]' role='dimension' type='nominal' />
+            <column caption='Release Year' datatype='integer' name='[release_year]' role='dimension' type='quantitative' />
+            <column caption='Type' datatype='string' name='[type]' role='dimension' type='nominal' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.1c7k9390kod6to102wt1w1y9yzxf].[Action (Rating)]'>
+            <groupfilter function='level-members' level='[rating]' user:ui-action-filter='[Action4_4A43F6E3C15C484AA799A499A63642EF]' user:ui-enumeration='all' user:ui-marker='enumerate' />
+          </filter>
+          <filter class='quantitative' column='[federated.1c7k9390kod6to102wt1w1y9yzxf].[none:release_year:qk]' included-values='in-range'>
+            <min>1925</min>
+            <max>2020</max>
+          </filter>
+          <slices>
+            <column>[federated.1c7k9390kod6to102wt1w1y9yzxf].[none:release_year:qk]</column>
+            <column>[federated.1c7k9390kod6to102wt1w1y9yzxf].[Action (Rating)]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='cell'>
+            <format attr='width' value='594' />
+            <format attr='font-weight' value='bold' />
+            <format attr='color' value='#ffffff' />
+          </style-rule>
+          <style-rule element='table'>
+            <format attr='background-color' value='#000000' />
+          </style-rule>
+          <style-rule element='title'>
+            <format attr='color' value='#ff1216' />
+            <format attr='font-weight' value='bold' />
+          </style-rule>
+          <style-rule element='tooltip'>
+            <format attr='color' value='#000000' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Circle' />
+            <encodings>
+              <size column='[federated.1c7k9390kod6to102wt1w1y9yzxf].[__tableau_internal_object_id__].[cnt:netflix_titles.csv_29523FE54D2846DFB91656DFE0639443:qk]' />
+              <text column='[federated.1c7k9390kod6to102wt1w1y9yzxf].[none:type:nk]' />
+              <text column='[federated.1c7k9390kod6to102wt1w1y9yzxf].[__tableau_internal_object_id__].[cnt:netflix_titles.csv_29523FE54D2846DFB91656DFE0639443:qk]' />
+              <text column='[federated.1c7k9390kod6to102wt1w1y9yzxf].[__tableau_internal_object_id__].[pcto:cnt:netflix_titles.csv_29523FE54D2846DFB91656DFE0639443:qk]' />
+              <color column='[federated.1c7k9390kod6to102wt1w1y9yzxf].[none:type:nk]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='true' />
+                <format attr='mark-labels-cull' value='true' />
+                <format attr='mark-labels-line-first' value='true' />
+                <format attr='mark-labels-line-last' value='true' />
+                <format attr='mark-labels-range-min' value='true' />
+                <format attr='mark-labels-range-max' value='true' />
+                <format attr='mark-labels-mode' value='all' />
+                <format attr='mark-labels-range-scope' value='pane' />
+                <format attr='mark-labels-range-field' value='' />
+              </style-rule>
+              <style-rule element='pane'>
+                <format attr='minwidth' value='-1' />
+                <format attr='maxwidth' value='-1' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows />
+        <cols />
+      </table>
+      <simple-id uuid='{8D77B00A-2206-4837-B07C-27C67E6A4D60}' />
+    </worksheet>
+    <worksheet name='Movies Duration'>
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run bold='true' fontcolor='#e15759'>Movies Duration</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='netflix_titles' name='federated.1c7k9390kod6to102wt1w1y9yzxf' />
+          </datasources>
+          <datasource-dependencies datasource='federated.1c7k9390kod6to102wt1w1y9yzxf'>
+            <column caption='DurationMinutes' datatype='integer' name='[Calculation_2933180426232176640]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='INT(LEFT([duration], FIND([duration], &quot; &quot;) - 1))' />
+            </column>
+            <column caption='Number of Titles' datatype='integer' name='[Calculation_2933180426233380866]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='COUNTD([title])' />
+            </column>
+            <column aggregation='None' caption='DurationMinutes (bin)' datatype='integer' name='[DurationMinutes (bin)]' role='dimension' type='ordinal'>
+              <calculation class='bin' decimals='1' formula='[Calculation_2933180426232176640]' peg='0' size='15' />
+            </column>
+            <column caption='Country' datatype='string' name='[country]' role='dimension' semantic-role='[Country].[ISO3166_2]' type='nominal' />
+            <column caption='Duration' datatype='string' name='[duration]' role='dimension' type='nominal' />
+            <column-instance column='[DurationMinutes (bin)]' derivation='None' name='[none:DurationMinutes (bin):ok]' pivot='key' type='ordinal' />
+            <column-instance column='[type]' derivation='None' name='[none:type:nk]' pivot='key' type='nominal' />
+            <column caption='Rating' datatype='string' name='[rating]' role='dimension' type='nominal' />
+            <column aggregation='CountD' caption='Title' datatype='string' datatype-customized='true' name='[title]' role='dimension' type='nominal' />
+            <column caption='Type' datatype='string' name='[type]' role='dimension' type='nominal' />
+            <column-instance column='[Calculation_2933180426233380866]' derivation='User' name='[usr:Calculation_2933180426233380866:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.1c7k9390kod6to102wt1w1y9yzxf].[Action (Country)]'>
+            <groupfilter function='level-members' level='[country]' user:ui-action-filter='[Action1_32E8EFA489464E51B0AED903FC48A8D7]' user:ui-enumeration='all' user:ui-marker='enumerate' />
+          </filter>
+          <filter class='categorical' column='[federated.1c7k9390kod6to102wt1w1y9yzxf].[Action (Rating)]'>
+            <groupfilter function='level-members' level='[rating]' user:ui-action-filter='[Action4_4A43F6E3C15C484AA799A499A63642EF]' user:ui-enumeration='all' user:ui-marker='enumerate' />
+          </filter>
+          <filter class='categorical' column='[federated.1c7k9390kod6to102wt1w1y9yzxf].[Action (Type)]'>
+            <groupfilter function='level-members' level='[type]' user:ui-action-filter='[Action3_07570728EBDA452BB6169E3C527FE0D7]' user:ui-enumeration='all' user:ui-marker='enumerate' />
+          </filter>
+          <filter class='categorical' column='[federated.1c7k9390kod6to102wt1w1y9yzxf].[none:type:nk]'>
+            <groupfilter function='level-members' level='[none:type:nk]' user:ui-enumeration='all' user:ui-marker='enumerate' />
+          </filter>
+          <slices>
+            <column>[federated.1c7k9390kod6to102wt1w1y9yzxf].[none:type:nk]</column>
+            <column>[federated.1c7k9390kod6to102wt1w1y9yzxf].[Action (Country)]</column>
+            <column>[federated.1c7k9390kod6to102wt1w1y9yzxf].[Action (Type)]</column>
+            <column>[federated.1c7k9390kod6to102wt1w1y9yzxf].[Action (Rating)]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='cell'>
+            <format attr='color' data-class='subtotal' scope='cols' value='#e15759' />
+          </style-rule>
+          <style-rule element='header'>
+            <format attr='background-color' value='#000000' />
+            <format attr='band-color' scope='rows' value='#00000000' />
+            <format attr='band-color' scope='cols' value='#00000000' />
+            <format attr='background-color' data-class='total' value='#00000000' />
+            <format attr='background-color' data-class='subtotal' value='#00000000' />
+            <format attr='background-color' scope='rows' value='#000000' />
+            <format attr='background-color' field='[federated.1c7k9390kod6to102wt1w1y9yzxf].[usr:Calculation_2933180426233380866:qk]' value='#000000' />
+          </style-rule>
+          <style-rule element='field-labels'>
+            <format attr='background-color' value='#000000' />
+          </style-rule>
+          <style-rule element='field-labels-decoration'>
+            <format attr='background-color' value='#000000' />
+          </style-rule>
+          <style-rule element='field-labels-spanner'>
+            <format attr='background-color' scope='rows' value='#000000' />
+            <format attr='background-color' scope='cols' value='#000000' />
+          </style-rule>
+          <style-rule element='label'>
+            <format attr='color' scope='cols' value='#e15759' />
+            <format attr='color' scope='rows' value='#e15759' />
+          </style-rule>
+          <style-rule element='pane'>
+            <format attr='background-color' value='#000000' />
+            <format attr='band-color' scope='cols' value='#00000000' />
+            <format attr='band-color' scope='rows' value='#00000000' />
+            <format attr='background-color' data-class='total' value='#00000000' />
+            <format attr='background-color' data-class='subtotal' value='#00000000' />
+          </style-rule>
+          <style-rule element='table'>
+            <format attr='background-color' value='#1b1b1b' />
+            <format attr='band-size' scope='rows' value='2' />
+            <format attr='band-size' scope='cols' value='1' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane id='1' selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-color' value='#e15759' />
+                <format attr='has-stroke' value='true' />
+                <format attr='stroke-color' value='#ffffff' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[federated.1c7k9390kod6to102wt1w1y9yzxf].[usr:Calculation_2933180426233380866:qk]</rows>
+        <cols>[federated.1c7k9390kod6to102wt1w1y9yzxf].[none:DurationMinutes (bin):ok]</cols>
+        <show-full-range>
+          <column>[federated.1c7k9390kod6to102wt1w1y9yzxf].[DurationMinutes (bin)]</column>
+        </show-full-range>
+      </table>
+      <simple-id uuid='{ADD0D283-CB47-4F85-92A0-FC51BAD3C9F4}' />
+    </worksheet>
+    <worksheet name='Number of Seasons in TV shows'>
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run bold='true' fontcolor='#e15759'>Number of Seasons</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='netflix_titles' name='federated.1c7k9390kod6to102wt1w1y9yzxf' />
+          </datasources>
+          <datasource-dependencies datasource='federated.1c7k9390kod6to102wt1w1y9yzxf'>
+            <column caption='Seasons' datatype='integer' name='[Calculation_2933180426232320001]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='INT(LEFT([duration], FIND([duration], &quot; &quot;) - 1))' />
+            </column>
+            <column caption='Number of Titles' datatype='integer' name='[Calculation_2933180426233380866]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='COUNTD([title])' />
+            </column>
+            <column caption='Duration' datatype='string' name='[duration]' role='dimension' type='nominal' />
+            <column-instance column='[Calculation_2933180426232320001]' derivation='None' name='[none:Calculation_2933180426232320001:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[type]' derivation='None' name='[none:type:nk]' pivot='key' type='nominal' />
+            <column aggregation='CountD' caption='Title' datatype='string' datatype-customized='true' name='[title]' role='dimension' type='nominal' />
+            <column caption='Type' datatype='string' name='[type]' role='dimension' type='nominal' />
+            <column-instance column='[Calculation_2933180426233380866]' derivation='User' name='[usr:Calculation_2933180426233380866:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.1c7k9390kod6to102wt1w1y9yzxf].[none:type:nk]'>
+            <groupfilter function='member' level='[none:type:nk]' member='&quot;TV Show&quot;' user:ui-domain='database' user:ui-enumeration='inclusive' user:ui-marker='enumerate' />
+          </filter>
+          <slices>
+            <column>[federated.1c7k9390kod6to102wt1w1y9yzxf].[none:type:nk]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='table'>
+            <format attr='background-color' value='#000000' />
+          </style-rule>
+          <style-rule element='worksheet'>
+            <format attr='color' value='#e15759' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Bar' />
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-color' value='#e15759' />
+                <format attr='has-stroke' value='true' />
+                <format attr='stroke-color' value='#ffffff' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[federated.1c7k9390kod6to102wt1w1y9yzxf].[usr:Calculation_2933180426233380866:qk]</rows>
+        <cols>[federated.1c7k9390kod6to102wt1w1y9yzxf].[none:Calculation_2933180426232320001:qk]</cols>
+      </table>
+      <simple-id uuid='{E1EEACA5-DBE9-4B7C-93DF-89E7E66939A1}' />
+    </worksheet>
+    <worksheet name='Ratings'>
+      <repository-location derived-from='https://haproxy-traffic-splitter/workbooks/NetflixDashboard_17413855811130/Ratings?rev=' id='Ratings' path='/workbooks/NetflixDashboard_17413855811130' revision='' />
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='netflix_titles' name='federated.1c7k9390kod6to102wt1w1y9yzxf' />
+          </datasources>
+          <datasource-dependencies datasource='federated.1c7k9390kod6to102wt1w1y9yzxf'>
+            <column-instance column='[__tableau_internal_object_id__].[netflix_titles.csv_29523FE54D2846DFB91656DFE0639443]' derivation='Count' name='[__tableau_internal_object_id__].[cnt:netflix_titles.csv_29523FE54D2846DFB91656DFE0639443:qk]' pivot='key' type='quantitative' />
+            <column caption='netflix_titles.csv' datatype='table' name='[__tableau_internal_object_id__].[netflix_titles.csv_29523FE54D2846DFB91656DFE0639443]' role='measure' type='quantitative' />
+            <column caption='Country' datatype='string' name='[country]' role='dimension' semantic-role='[Country].[ISO3166_2]' type='nominal' />
+            <column-instance column='[title]' derivation='CountD' name='[ctd:title:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[country]' derivation='None' name='[none:country:nk]' pivot='key' type='nominal' />
+            <column-instance column='[rating]' derivation='None' name='[none:rating:nk]' pivot='key' type='nominal' />
+            <column caption='Rating' datatype='string' name='[rating]' role='dimension' type='nominal' />
+            <column aggregation='CountD' caption='Title' datatype='string' datatype-customized='true' name='[title]' role='dimension' type='nominal' />
+            <column caption='Type' datatype='string' name='[type]' role='dimension' type='nominal' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.1c7k9390kod6to102wt1w1y9yzxf].[Action (Country)]'>
+            <groupfilter function='level-members' level='[country]' user:ui-action-filter='[Action1_32E8EFA489464E51B0AED903FC48A8D7]' user:ui-enumeration='all' user:ui-marker='enumerate' />
+          </filter>
+          <filter class='categorical' column='[federated.1c7k9390kod6to102wt1w1y9yzxf].[Action (Type)]'>
+            <groupfilter function='level-members' level='[type]' user:ui-action-filter='[Action3_07570728EBDA452BB6169E3C527FE0D7]' user:ui-enumeration='all' user:ui-marker='enumerate' />
+          </filter>
+          <filter class='quantitative' column='[federated.1c7k9390kod6to102wt1w1y9yzxf].[ctd:title:qk]' included-values='in-range' />
+          <filter class='categorical' column='[federated.1c7k9390kod6to102wt1w1y9yzxf].[none:country:nk]'>
+            <groupfilter function='level-members' level='[none:country:nk]' user:ui-enumeration='all' user:ui-marker='enumerate' />
+          </filter>
+          <filter class='categorical' column='[federated.1c7k9390kod6to102wt1w1y9yzxf].[none:rating:nk]'>
+            <groupfilter function='except' user:ui-domain='relevant' user:ui-enumeration='exclusive' user:ui-marker='enumerate'>
+              <groupfilter function='level-members' level='[none:rating:nk]' />
+              <groupfilter function='member' level='[none:rating:nk]' member='%null%' />
+            </groupfilter>
+          </filter>
+          <computed-sort column='[federated.1c7k9390kod6to102wt1w1y9yzxf].[none:rating:nk]' direction='DESC' using='[federated.1c7k9390kod6to102wt1w1y9yzxf].[__tableau_internal_object_id__].[cnt:netflix_titles.csv_29523FE54D2846DFB91656DFE0639443:qk]' />
+          <slices>
+            <column>[federated.1c7k9390kod6to102wt1w1y9yzxf].[none:rating:nk]</column>
+            <column>[federated.1c7k9390kod6to102wt1w1y9yzxf].[ctd:title:qk]</column>
+            <column>[federated.1c7k9390kod6to102wt1w1y9yzxf].[none:country:nk]</column>
+            <column>[federated.1c7k9390kod6to102wt1w1y9yzxf].[Action (Country)]</column>
+            <column>[federated.1c7k9390kod6to102wt1w1y9yzxf].[Action (Type)]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='axis'>
+            <format attr='title' class='0' field='[federated.1c7k9390kod6to102wt1w1y9yzxf].[__tableau_internal_object_id__].[cnt:netflix_titles.csv_29523FE54D2846DFB91656DFE0639443:qk]' scope='rows' value='Number of Titles' />
+          </style-rule>
+          <style-rule element='cell'>
+            <format attr='font-weight' value='bold' />
+            <format attr='color' value='#ffffff' />
+            <format attr='text-format' field='[federated.1c7k9390kod6to102wt1w1y9yzxf].[__tableau_internal_object_id__].[cnt:netflix_titles.csv_29523FE54D2846DFB91656DFE0639443:qk]' value='N' />
+          </style-rule>
+          <style-rule element='label'>
+            <format attr='color' value='#ff1216' />
+            <format attr='font-weight' value='bold' />
+            <format attr='color' scope='rows' value='#ff1216' />
+          </style-rule>
+          <style-rule element='mark'>
+            <encoding attr='color' field='[federated.1c7k9390kod6to102wt1w1y9yzxf].[ctd:title:qk]' palette='red_10_0' type='interpolated' />
+          </style-rule>
+          <style-rule element='pane'>
+            <format attr='background-color' data-class='subtotal' value='#000000' />
+          </style-rule>
+          <style-rule element='table'>
+            <format attr='background-color' value='#000000' />
+          </style-rule>
+          <style-rule element='title'>
+            <format attr='color' value='#ff1216' />
+            <format attr='font-weight' value='bold' />
+          </style-rule>
+          <style-rule element='tooltip'>
+            <format attr='font-weight' value='bold' />
+            <format attr='color' value='#ff1216' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <color column='[federated.1c7k9390kod6to102wt1w1y9yzxf].[ctd:title:qk]' />
+            </encodings>
+          </pane>
+        </panes>
+        <rows>[federated.1c7k9390kod6to102wt1w1y9yzxf].[__tableau_internal_object_id__].[cnt:netflix_titles.csv_29523FE54D2846DFB91656DFE0639443:qk]</rows>
+        <cols>[federated.1c7k9390kod6to102wt1w1y9yzxf].[none:rating:nk]</cols>
+      </table>
+      <simple-id uuid='{B735C204-004B-47A4-981C-57D3FA2F66E7}' />
+    </worksheet>
+    <worksheet name='Top 10 Genre'>
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run>Top Genres&#10;</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <repository-location derived-from='https://haproxy-traffic-splitter/workbooks/NetflixDashboard_17413855811130/Top10Genre?rev=' id='Top10Genre' path='/workbooks/NetflixDashboard_17413855811130' revision='' />
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='netflix_titles' name='federated.1c7k9390kod6to102wt1w1y9yzxf' />
+          </datasources>
+          <datasource-dependencies datasource='federated.1c7k9390kod6to102wt1w1y9yzxf'>
+            <column caption='Genre' datatype='string' name='[Calculation_608197110515818497]' role='dimension' type='nominal'>
+              <calculation class='tableau' formula='SPLIT([listed_in], &quot;,&quot;, 1)' />
+            </column>
+            <column-instance column='[__tableau_internal_object_id__].[netflix_titles.csv_29523FE54D2846DFB91656DFE0639443]' derivation='Count' name='[__tableau_internal_object_id__].[cnt:netflix_titles.csv_29523FE54D2846DFB91656DFE0639443:qk]' pivot='key' type='quantitative' />
+            <column caption='netflix_titles.csv' datatype='table' name='[__tableau_internal_object_id__].[netflix_titles.csv_29523FE54D2846DFB91656DFE0639443]' role='measure' type='quantitative' />
+            <column caption='Country' datatype='string' name='[country]' role='dimension' semantic-role='[Country].[ISO3166_2]' type='nominal' />
+            <column caption='Date Added' datatype='date' datatype-customized='true' name='[date_added]' role='dimension' type='ordinal' />
+            <column caption='Duration' datatype='string' name='[duration]' role='dimension' type='nominal' />
+            <column caption='Listed In' datatype='string' name='[listed_in]' role='dimension' type='nominal' />
+            <column-instance column='[Calculation_608197110515818497]' derivation='None' name='[none:Calculation_608197110515818497:nk]' pivot='key' type='nominal' />
+            <column caption='Rating' datatype='string' name='[rating]' role='dimension' type='nominal' />
+            <column aggregation='CountD' caption='Title' datatype='string' datatype-customized='true' name='[title]' role='dimension' type='nominal' />
+            <column caption='Type' datatype='string' name='[type]' role='dimension' type='nominal' />
+            <column-instance column='[date_added]' derivation='Year' name='[yr:date_added:ok]' pivot='key' type='ordinal' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.1c7k9390kod6to102wt1w1y9yzxf].[Action (Country)]'>
+            <groupfilter function='level-members' level='[country]' user:ui-action-filter='[Action2_2100BD41A730429C8CA052E610E470BF]' user:ui-enumeration='all' user:ui-marker='enumerate' />
+          </filter>
+          <filter class='categorical' column='[federated.1c7k9390kod6to102wt1w1y9yzxf].[Action (Genre,Duration,Rating,Title,Type)]'>
+            <groupfilter function='crossjoin' user:ui-action-filter='[Action1_595DF04C60AF4FF48C626F7BBE2B3C68]' user:ui-enumeration='all' user:ui-marker='enumerate'>
+              <groupfilter function='level-members' level='[Calculation_608197110515818497]' />
+              <groupfilter function='level-members' level='[duration]' />
+              <groupfilter function='level-members' level='[rating]' />
+              <groupfilter function='level-members' level='[title]' />
+              <groupfilter function='level-members' level='[type]' />
+            </groupfilter>
+          </filter>
+          <filter class='categorical' column='[federated.1c7k9390kod6to102wt1w1y9yzxf].[Action (Genre,YEAR(Date Added),Duration,Title,Type)]'>
+            <groupfilter function='crossjoin' user:ui-action-filter='[Action1_595DF04C60AF4FF48C626F7BBE2B3C68]' user:ui-enumeration='all' user:ui-marker='enumerate'>
+              <groupfilter function='level-members' level='[Calculation_608197110515818497]' />
+              <groupfilter function='level-members' level='[yr:date_added:ok]' />
+              <groupfilter function='level-members' level='[duration]' />
+              <groupfilter function='level-members' level='[title]' />
+              <groupfilter function='level-members' level='[type]' />
+            </groupfilter>
+          </filter>
+          <filter class='categorical' column='[federated.1c7k9390kod6to102wt1w1y9yzxf].[Action (Rating)]'>
+            <groupfilter function='level-members' level='[rating]' user:ui-action-filter='[Action4_4A43F6E3C15C484AA799A499A63642EF]' user:ui-enumeration='all' user:ui-marker='enumerate' />
+          </filter>
+          <filter class='categorical' column='[federated.1c7k9390kod6to102wt1w1y9yzxf].[Action (Type)]'>
+            <groupfilter function='level-members' level='[type]' user:ui-action-filter='[Action3_21A96E1EF0284DBDA3E90DCB630E6474]' user:ui-enumeration='all' user:ui-marker='enumerate' />
+          </filter>
+          <filter class='categorical' column='[federated.1c7k9390kod6to102wt1w1y9yzxf].[none:Calculation_608197110515818497:nk]'>
+            <groupfilter count='10' end='top' function='end' units='records' user:ui-marker='end' user:ui-top-by-field='true'>
+              <groupfilter direction='DESC' expression='COUNT([__tableau_internal_object_id__].[netflix_titles.csv_29523FE54D2846DFB91656DFE0639443])' function='order' user:ui-marker='order'>
+                <groupfilter function='level-members' level='[none:Calculation_608197110515818497:nk]' user:ui-enumeration='all' user:ui-marker='enumerate' />
+              </groupfilter>
+            </groupfilter>
+          </filter>
+          <slices>
+            <column>[federated.1c7k9390kod6to102wt1w1y9yzxf].[none:Calculation_608197110515818497:nk]</column>
+            <column>[federated.1c7k9390kod6to102wt1w1y9yzxf].[Action (Genre,Duration,Rating,Title,Type)]</column>
+            <column>[federated.1c7k9390kod6to102wt1w1y9yzxf].[Action (Country)]</column>
+            <column>[federated.1c7k9390kod6to102wt1w1y9yzxf].[Action (Genre,YEAR(Date Added),Duration,Title,Type)]</column>
+            <column>[federated.1c7k9390kod6to102wt1w1y9yzxf].[Action (Type)]</column>
+            <column>[federated.1c7k9390kod6to102wt1w1y9yzxf].[Action (Rating)]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='cell'>
+            <format attr='color' value='#ffffff' />
+            <format attr='font-weight' value='bold' />
+          </style-rule>
+          <style-rule element='label'>
+            <format attr='color' value='#ff1216' />
+            <format attr='font-weight' value='bold' />
+          </style-rule>
+          <style-rule element='mark'>
+            <encoding attr='color' field='[federated.1c7k9390kod6to102wt1w1y9yzxf].[__tableau_internal_object_id__].[cnt:netflix_titles.csv_29523FE54D2846DFB91656DFE0639443:qk]' palette='red_10_0' type='interpolated' />
+          </style-rule>
+          <style-rule element='table'>
+            <format attr='background-color' value='#000000' />
+          </style-rule>
+          <style-rule element='title'>
+            <format attr='color' value='#ff1216' />
+            <format attr='font-weight' value='bold' />
+          </style-rule>
+          <style-rule element='tooltip'>
+            <format attr='font-weight' value='bold' />
+            <format attr='color' value='#ff1216' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='on' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <size column='[federated.1c7k9390kod6to102wt1w1y9yzxf].[__tableau_internal_object_id__].[cnt:netflix_titles.csv_29523FE54D2846DFB91656DFE0639443:qk]' />
+              <color column='[federated.1c7k9390kod6to102wt1w1y9yzxf].[__tableau_internal_object_id__].[cnt:netflix_titles.csv_29523FE54D2846DFB91656DFE0639443:qk]' />
+              <text column='[federated.1c7k9390kod6to102wt1w1y9yzxf].[none:Calculation_608197110515818497:nk]' />
+              <text column='[federated.1c7k9390kod6to102wt1w1y9yzxf].[__tableau_internal_object_id__].[cnt:netflix_titles.csv_29523FE54D2846DFB91656DFE0639443:qk]' />
+            </encodings>
+            <style>
+              <style-rule element='datalabel'>
+                <format attr='color-mode' value='user' />
+                <format attr='color' value='#ffffff' />
+                <format attr='font-weight' value='bold' />
+                <format attr='font-size' value='9' />
+              </style-rule>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='true' />
+                <format attr='mark-labels-cull' value='true' />
+                <format attr='mark-labels-line-first' value='true' />
+                <format attr='mark-labels-line-last' value='true' />
+                <format attr='mark-labels-range-min' value='true' />
+                <format attr='mark-labels-range-max' value='true' />
+                <format attr='mark-labels-range-scope' value='pane' />
+                <format attr='mark-labels-range-field' value='' />
+                <format attr='mark-labels-mode' value='all' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows />
+        <cols />
+      </table>
+      <simple-id uuid='{E8A83C14-6573-4793-A597-E0F4ED7197E8}' />
+    </worksheet>
+    <worksheet name='Total Movies &amp; Shows By Country'>
+      <repository-location derived-from='https://haproxy-traffic-splitter/workbooks/NetflixDashboard_17413855811130/TotalMoviesShowsByCountry?rev=' id='TotalMoviesShowsByCountry' path='/workbooks/NetflixDashboard_17413855811130' revision='' />
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='netflix_titles' name='federated.1c7k9390kod6to102wt1w1y9yzxf' />
+          </datasources>
+          <mapsources>
+            <mapsource name='Tableau' />
+          </mapsources>
+          <datasource-dependencies datasource='federated.1c7k9390kod6to102wt1w1y9yzxf'>
+            <column-instance column='[__tableau_internal_object_id__].[netflix_titles.csv_29523FE54D2846DFB91656DFE0639443]' derivation='Count' name='[__tableau_internal_object_id__].[cnt:netflix_titles.csv_29523FE54D2846DFB91656DFE0639443:qk]' pivot='key' type='quantitative' />
+            <column caption='netflix_titles.csv' datatype='table' name='[__tableau_internal_object_id__].[netflix_titles.csv_29523FE54D2846DFB91656DFE0639443]' role='measure' type='quantitative' />
+            <column caption='Country' datatype='string' name='[country]' role='dimension' semantic-role='[Country].[ISO3166_2]' type='nominal' />
+            <column-instance column='[country]' derivation='None' name='[none:country:nk]' pivot='key' type='nominal' />
+            <column caption='Rating' datatype='string' name='[rating]' role='dimension' type='nominal' />
+            <column caption='Type' datatype='string' name='[type]' role='dimension' type='nominal' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.1c7k9390kod6to102wt1w1y9yzxf].[Action (Rating)]'>
+            <groupfilter function='level-members' level='[rating]' user:ui-action-filter='[Action4_4A43F6E3C15C484AA799A499A63642EF]' user:ui-enumeration='all' user:ui-marker='enumerate' />
+          </filter>
+          <filter class='categorical' column='[federated.1c7k9390kod6to102wt1w1y9yzxf].[Action (Type)]'>
+            <groupfilter function='level-members' level='[type]' user:ui-action-filter='[Action3_07570728EBDA452BB6169E3C527FE0D7]' user:ui-enumeration='all' user:ui-marker='enumerate' />
+          </filter>
+          <slices>
+            <column>[federated.1c7k9390kod6to102wt1w1y9yzxf].[Action (Type)]</column>
+            <column>[federated.1c7k9390kod6to102wt1w1y9yzxf].[Action (Rating)]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='axis'>
+            <encoding attr='space' class='0' field='[federated.1c7k9390kod6to102wt1w1y9yzxf].[Longitude (generated)]' field-type='quantitative' max='15081471.609256834' min='-21645005.612383027' projection='EPSG:3857' range-type='fixed' scope='cols' type='space' />
+            <encoding attr='space' class='0' field='[federated.1c7k9390kod6to102wt1w1y9yzxf].[Latitude (generated)]' field-type='quantitative' max='19068699.397470359' min='-731662.76805653458' projection='EPSG:3857' range-type='fixed' scope='rows' type='space' />
+          </style-rule>
+          <style-rule element='cell'>
+            <format attr='color' value='#ff1216' />
+          </style-rule>
+          <style-rule element='header'>
+            <format attr='background-color' value='#000000' />
+            <format attr='band-color' scope='rows' value='#000000' />
+          </style-rule>
+          <style-rule element='mark'>
+            <encoding attr='color' field='[federated.1c7k9390kod6to102wt1w1y9yzxf].[__tableau_internal_object_id__].[cnt:netflix_titles.csv_29523FE54D2846DFB91656DFE0639443:qk]' palette='red_10_0' type='interpolated' />
+          </style-rule>
+          <style-rule element='pane'>
+            <format attr='band-color' scope='cols' value='#000000' />
+            <format attr='background-color' value='#000000' />
+            <format attr='band-color' scope='rows' value='#000000' />
+          </style-rule>
+          <style-rule element='table'>
+            <format attr='band-size' scope='cols' value='1' />
+            <format attr='background-color' value='#000000' />
+            <format attr='band-size' scope='rows' value='1' />
+          </style-rule>
+          <style-rule element='worksheet'>
+            <format attr='color' value='#ff1216' />
+          </style-rule>
+          <style-rule element='title'>
+            <format attr='color' value='#ff1216' />
+            <format attr='font-weight' value='bold' />
+          </style-rule>
+          <style-rule element='map'>
+            <format attr='washout' value='0.0' />
+          </style-rule>
+          <style-rule element='tooltip'>
+            <format attr='color' value='#ff1216' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <lod column='[federated.1c7k9390kod6to102wt1w1y9yzxf].[none:country:nk]' />
+              <color column='[federated.1c7k9390kod6to102wt1w1y9yzxf].[__tableau_internal_object_id__].[cnt:netflix_titles.csv_29523FE54D2846DFB91656DFE0639443:qk]' />
+              <geometry column='[federated.1c7k9390kod6to102wt1w1y9yzxf].[Geometry (generated)]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='has-stroke' value='true' />
+                <format attr='stroke-color' value='#000000' />
+                <format attr='has-halo' value='true' />
+                <format attr='halo-color' value='#000000' />
+                <format attr='mark-transparency' value='255' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[federated.1c7k9390kod6to102wt1w1y9yzxf].[Latitude (generated)]</rows>
+        <cols>[federated.1c7k9390kod6to102wt1w1y9yzxf].[Longitude (generated)]</cols>
+      </table>
+      <simple-id uuid='{4BAA4AEE-0D76-4B44-A912-E4FB6DEB0A94}' />
+    </worksheet>
+    <worksheet name='Total Movies &amp; Total Shows by Years'>
+      <repository-location derived-from='https://haproxy-traffic-splitter/workbooks/NetflixDashboard_17413855811130/TotalMoviesTotalShowsbyYears?rev=' id='TotalMoviesTotalShowsbyYears' path='/workbooks/NetflixDashboard_17413855811130' revision='' />
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='netflix_titles' name='federated.1c7k9390kod6to102wt1w1y9yzxf' />
+          </datasources>
+          <datasource-dependencies datasource='federated.1c7k9390kod6to102wt1w1y9yzxf'>
+            <column caption='Genre' datatype='string' name='[Calculation_608197110515818497]' role='dimension' type='nominal'>
+              <calculation class='tableau' formula='SPLIT([listed_in], &quot;,&quot;, 1)' />
+            </column>
+            <column-instance column='[__tableau_internal_object_id__].[netflix_titles.csv_29523FE54D2846DFB91656DFE0639443]' derivation='Count' name='[__tableau_internal_object_id__].[cnt:netflix_titles.csv_29523FE54D2846DFB91656DFE0639443:qk]' pivot='key' type='quantitative' />
+            <column caption='netflix_titles.csv' datatype='table' name='[__tableau_internal_object_id__].[netflix_titles.csv_29523FE54D2846DFB91656DFE0639443]' role='measure' type='quantitative' />
+            <column caption='Country' datatype='string' name='[country]' role='dimension' semantic-role='[Country].[ISO3166_2]' type='nominal' />
+            <column caption='Date Added' datatype='date' datatype-customized='true' name='[date_added]' role='dimension' type='ordinal' />
+            <column caption='Duration' datatype='string' name='[duration]' role='dimension' type='nominal' />
+            <column caption='Listed In' datatype='string' name='[listed_in]' role='dimension' type='nominal' />
+            <column-instance column='[date_added]' derivation='None' name='[none:date_added:ok]' pivot='key' type='ordinal' />
+            <column-instance column='[type]' derivation='None' name='[none:type:nk]' pivot='key' type='nominal' />
+            <column caption='Rating' datatype='string' name='[rating]' role='dimension' type='nominal' />
+            <column aggregation='CountD' caption='Title' datatype='string' datatype-customized='true' name='[title]' role='dimension' type='nominal' />
+            <column caption='Type' datatype='string' name='[type]' role='dimension' type='nominal' />
+            <column-instance column='[date_added]' derivation='Year' name='[yr:date_added:ok]' pivot='key' type='ordinal' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.1c7k9390kod6to102wt1w1y9yzxf].[Action (Country)]'>
+            <groupfilter function='level-members' level='[country]' user:ui-action-filter='[Action2_2100BD41A730429C8CA052E610E470BF]' user:ui-enumeration='all' user:ui-marker='enumerate' />
+          </filter>
+          <filter class='categorical' column='[federated.1c7k9390kod6to102wt1w1y9yzxf].[Action (Genre,Duration,Rating,Title,Type)]'>
+            <groupfilter function='crossjoin' user:ui-action-filter='[Action1_595DF04C60AF4FF48C626F7BBE2B3C68]' user:ui-enumeration='all' user:ui-marker='enumerate'>
+              <groupfilter function='level-members' level='[Calculation_608197110515818497]' />
+              <groupfilter function='level-members' level='[duration]' />
+              <groupfilter function='level-members' level='[rating]' />
+              <groupfilter function='level-members' level='[title]' />
+              <groupfilter function='level-members' level='[type]' />
+            </groupfilter>
+          </filter>
+          <filter class='categorical' column='[federated.1c7k9390kod6to102wt1w1y9yzxf].[Action (Genre,YEAR(Date Added),Duration,Title,Type)]'>
+            <groupfilter function='crossjoin' user:ui-action-filter='[Action1_595DF04C60AF4FF48C626F7BBE2B3C68]' user:ui-enumeration='all' user:ui-marker='enumerate'>
+              <groupfilter function='level-members' level='[Calculation_608197110515818497]' />
+              <groupfilter function='level-members' level='[yr:date_added:ok]' />
+              <groupfilter function='level-members' level='[duration]' />
+              <groupfilter function='level-members' level='[title]' />
+              <groupfilter function='level-members' level='[type]' />
+            </groupfilter>
+          </filter>
+          <filter class='categorical' column='[federated.1c7k9390kod6to102wt1w1y9yzxf].[Action (Rating)]'>
+            <groupfilter function='level-members' level='[rating]' user:ui-action-filter='[Action4_4A43F6E3C15C484AA799A499A63642EF]' user:ui-enumeration='all' user:ui-marker='enumerate' />
+          </filter>
+          <filter class='categorical' column='[federated.1c7k9390kod6to102wt1w1y9yzxf].[Action (Type)]'>
+            <groupfilter function='level-members' level='[type]' user:ui-action-filter='[Action3_21A96E1EF0284DBDA3E90DCB630E6474]' user:ui-enumeration='all' user:ui-marker='enumerate' />
+          </filter>
+          <filter class='categorical' column='[federated.1c7k9390kod6to102wt1w1y9yzxf].[none:date_added:ok]'>
+            <groupfilter function='except' user:ui-domain='relevant' user:ui-enumeration='inclusive' user:ui-marker='enumerate'>
+              <groupfilter function='level-members' level='[none:date_added:ok]' />
+              <groupfilter function='empty-level' member='[none:date_added:ok]' />
+            </groupfilter>
+          </filter>
+          <filter class='categorical' column='[federated.1c7k9390kod6to102wt1w1y9yzxf].[yr:date_added:ok]'>
+            <groupfilter function='except' user:ui-domain='relevant' user:ui-enumeration='exclusive' user:ui-marker='enumerate'>
+              <groupfilter function='level-members' level='[yr:date_added:ok]' />
+              <groupfilter function='member' level='[yr:date_added:ok]' member='%null%' />
+            </groupfilter>
+          </filter>
+          <slices>
+            <column>[federated.1c7k9390kod6to102wt1w1y9yzxf].[none:date_added:ok]</column>
+            <column>[federated.1c7k9390kod6to102wt1w1y9yzxf].[Action (Genre,Duration,Rating,Title,Type)]</column>
+            <column>[federated.1c7k9390kod6to102wt1w1y9yzxf].[Action (Country)]</column>
+            <column>[federated.1c7k9390kod6to102wt1w1y9yzxf].[Action (Genre,YEAR(Date Added),Duration,Title,Type)]</column>
+            <column>[federated.1c7k9390kod6to102wt1w1y9yzxf].[Action (Type)]</column>
+            <column>[federated.1c7k9390kod6to102wt1w1y9yzxf].[yr:date_added:ok]</column>
+            <column>[federated.1c7k9390kod6to102wt1w1y9yzxf].[Action (Rating)]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='axis'>
+            <format attr='title' class='0' field='[federated.1c7k9390kod6to102wt1w1y9yzxf].[__tableau_internal_object_id__].[cnt:netflix_titles.csv_29523FE54D2846DFB91656DFE0639443:qk]' scope='rows' value='Number of Titles' />
+          </style-rule>
+          <style-rule element='cell'>
+            <format attr='color' value='#ffffff' />
+            <format attr='font-weight' value='bold' />
+          </style-rule>
+          <style-rule element='label'>
+            <format attr='color' value='#ff1216' />
+            <format attr='font-weight' value='normal' />
+            <format attr='color' scope='rows' value='#ff1216' />
+          </style-rule>
+          <style-rule element='table'>
+            <format attr='background-color' value='#000000' />
+          </style-rule>
+          <style-rule element='worksheet'>
+            <format attr='color' value='#ff1216' />
+            <format attr='font-weight' value='normal' />
+          </style-rule>
+          <style-rule element='title'>
+            <format attr='color' value='#ff1216' />
+            <format attr='font-weight' value='bold' />
+          </style-rule>
+          <style-rule element='tooltip'>
+            <format attr='color' value='#ff1216' />
+            <format attr='font-weight' value='normal' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Area' />
+            <encodings>
+              <color column='[federated.1c7k9390kod6to102wt1w1y9yzxf].[none:type:nk]' />
+              <text column='[federated.1c7k9390kod6to102wt1w1y9yzxf].[none:type:nk]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='true' />
+                <format attr='mark-labels-cull' value='true' />
+                <format attr='has-stroke' value='true' />
+                <format attr='stroke-color' value='#000000' />
+                <format attr='mark-transparency' value='234' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[federated.1c7k9390kod6to102wt1w1y9yzxf].[__tableau_internal_object_id__].[cnt:netflix_titles.csv_29523FE54D2846DFB91656DFE0639443:qk]</rows>
+        <cols>[federated.1c7k9390kod6to102wt1w1y9yzxf].[yr:date_added:ok]</cols>
+      </table>
+      <simple-id uuid='{AB837995-56FF-40E9-85DF-0DA9D3359D4E}' />
+    </worksheet>
+  </worksheets>
+  <dashboards>
+    <dashboard enable-sort-zone-taborder='true' name='Introduction'>
+      <repository-location id='Introduction' path='/workbooks/NetflixDashboard_17413855811130' revision='' />
+      <style>
+        <style-rule element='table'>
+          <format attr='background-color' value='#000000' />
+        </style-rule>
+        <style-rule element='dash-title'>
+          <format attr='color' value='#ffffff' />
+          <format attr='text-align' value='center' />
+        </style-rule>
+      </style>
+      <size maxheight='860' maxwidth='650' minheight='560' minwidth='420' />
+      <zones>
+        <zone h='100000' id='4' type-v2='layout-basic' w='100000' x='0' y='0'>
+          <zone h='98072' id='10' param='horz' type-v2='layout-flow' w='97538' x='1231' y='964'>
+            <zone h='98072' id='5' type-v2='layout-basic' w='97538' x='1231' y='964' />
+          </zone>
+          <zone-style>
+            <format attr='border-color' value='#000000' />
+            <format attr='border-style' value='none' />
+            <format attr='border-width' value='0' />
+            <format attr='margin' value='8' />
+          </zone-style>
+        </zone>
+        <zone forceUpdate='true' h='9363' id='3' type-v2='text' w='65231' x='32154' y='5592'>
+          <formatted-text>
+            <run bold='true' fontalignment='1' fontcolor='#ffffff' fontname='Benton Sans Book' fontsize='14'>Netflix Content Analysis Dashboard - Introduction</run>
+            <run fontalignment='1'>Æ&#10;</run>
+            <run bold='true' fontalignment='1' fontcolor='#ffffff' fontname='Benton Sans Book' fontsize='14'>Adesh Gaurav</run>
+          </formatted-text>
+        </zone>
+        <zone forceUpdate='true' h='36931' id='8' type-v2='text' w='67077' x='16462' y='17035'>
+          <formatted-text>
+            <run bold='true' fontcolor='#ffffff' fontname='Benton Sans Book'>Overview</run>
+            <run>Æ&#10;</run>
+            <run fontcolor='#ffffff' fontname='Benton Sans Book'>This </run>
+            <run bold='true' fontcolor='#ffffff' fontname='Benton Sans Book'>Netflix Content Analysis Dashboard</run>
+            <run fontcolor='#ffffff' fontname='Benton Sans Book'> provides insights into the composition and distribution of content available on Netflix. The dashboard visualizes trends related to Movies and TV Shows, their distribution by country, genre popularity, and content ratings over the years.</run>
+          </formatted-text>
+        </zone>
+        <zone forceUpdate='true' h='40442' id='11' type-v2='text' w='67077' x='16462' y='37061'>
+          <formatted-text>
+            <run bold='true' fontcolor='#ffffff' fontname='Benton Sans Book'>Key Insights:</run>
+            <run>Æ&#10;</run>
+            <run fontcolor='#ffffff' fontname='Benton Sans Book'>🔴 </run>
+            <run bold='true' fontcolor='#ffffff' fontname='Benton Sans Book'>Movies vs. TV Shows:</run>
+            <run fontcolor='#ffffff' fontname='Benton Sans Book'> The proportion of Movies and TV Shows in Netflix’s catalog.</run>
+            <run>Æ&#10;</run>
+            <run fontcolor='#ffffff' fontname='Benton Sans Book'>📈 </run>
+            <run bold='true' fontcolor='#ffffff' fontname='Benton Sans Book'>Content Growth Over Time:</run>
+            <run fontcolor='#ffffff' fontname='Benton Sans Book'> Trends in content additions to Netflix, categorized by year.</run>
+            <run>Æ&#10;</run>
+            <run fontcolor='#ffffff' fontname='Benton Sans Book'>🌍 </run>
+            <run bold='true' fontcolor='#ffffff' fontname='Benton Sans Book'>Top Countries Producing Content:</run>
+            <run fontcolor='#ffffff' fontname='Benton Sans Book'> Geographic distribution of Netflix content worldwide.</run>
+            <run>Æ&#10;</run>
+            <run fontcolor='#ffffff' fontname='Benton Sans Book'>🎭 </run>
+            <run bold='true' fontcolor='#ffffff' fontname='Benton Sans Book'>Most Popular Genres:</run>
+            <run fontcolor='#ffffff' fontname='Benton Sans Book'> A breakdown of the top genres available on Netflix.</run>
+            <run>Æ&#10;</run>
+            <run fontcolor='#ffffff' fontname='Benton Sans Book'>⭐ </run>
+            <run bold='true' fontcolor='#ffffff' fontname='Benton Sans Book'>Content Ratings:</run>
+            <run fontcolor='#ffffff' fontname='Benton Sans Book'> Analysis of the most frequent ratings (TV-MA, PG-13, etc.).</run>
+          </formatted-text>
+        </zone>
+        <zone forceUpdate='true' h='23277' id='12' type-v2='text' w='72769' x='16154' y='68531'>
+          <formatted-text>
+            <run bold='true' fontcolor='#ffffff' fontname='Benton Sans Book'>Purpose:</run>
+            <run>Æ&#10;</run>
+            <run fontcolor='#ffffff' fontname='Benton Sans Book'>- Identify content trends to understand Netflix&apos;s evolving library.</run>
+            <run>Æ&#10;</run>
+            <run fontcolor='#ffffff' fontname='Benton Sans Book'>- Analyze the most popular genres and countries contributing to the platform.</run>
+            <run>Æ&#10;</run>
+            <run fontcolor='#ffffff' fontname='Benton Sans Book'>- Gain insights into content ratings and their impact on audience preferences.</run>
+          </formatted-text>
+        </zone>
+        <zone h='8000' id='13' type-v2='dashboard-object' w='25231' x='74000' y='91077'>
+          <button action='tabdoc:goto-sheet window-id=&quot;{1CA9D0C1-64FC-4001-B814-0577677AD08D}&quot;' button-type='text'>
+            <button-visual-state>
+              <caption>Next</caption>
+              <button-caption-font-style bold='true' fontcolor='#e15759' fontname='Tableau Bold' fontsize='12' />
+              <format attr='background-color' value='#000000' />
+            </button-visual-state>
+          </button>
+        </zone>
+        <zone h='17692' id='14' is-centered='0' is-scaled='1' param='Image/Netflix-logo-red-black-png.png' type-v2='bitmap' w='41538' x='462' y='1231' />
+      </zones>
+      <devicelayouts>
+        <devicelayout auto-generated='true' name='Phone'>
+          <size maxheight='700' minheight='700' sizing-mode='vscroll' />
+          <zones>
+            <zone h='100000' id='26' type-v2='layout-basic' w='100000' x='0' y='0'>
+              <zone h='97920' id='25' param='vert' type-v2='layout-flow' w='97538' x='1231' y='1040'>
+                <zone fixed-size='152' h='17692' id='14' is-centered='0' is-fixed='true' is-scaled='1' param='Image/Netflix-logo-red-black-png.png' type-v2='bitmap' w='41538' x='462' y='1231'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone forceUpdate='true' h='9363' id='3' type-v2='text' w='65231' x='32154' y='5592'>
+                  <formatted-text>
+                    <run bold='true' fontalignment='1' fontcolor='#ffffff' fontname='Benton Sans Book' fontsize='14'>Netflix Content Analysis Dashboard - Introduction</run>
+                    <run fontalignment='1'>Æ&#10;</run>
+                    <run bold='true' fontalignment='1' fontcolor='#ffffff' fontname='Benton Sans Book' fontsize='14'>Adesh Gaurav</run>
+                  </formatted-text>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone forceUpdate='true' h='36931' id='8' type-v2='text' w='67077' x='16462' y='17035'>
+                  <formatted-text>
+                    <run bold='true' fontcolor='#ffffff' fontname='Benton Sans Book'>Overview</run>
+                    <run>Æ&#10;</run>
+                    <run fontcolor='#ffffff' fontname='Benton Sans Book'>This </run>
+                    <run bold='true' fontcolor='#ffffff' fontname='Benton Sans Book'>Netflix Content Analysis Dashboard</run>
+                    <run fontcolor='#ffffff' fontname='Benton Sans Book'> provides insights into the composition and distribution of content available on Netflix. The dashboard visualizes trends related to Movies and TV Shows, their distribution by country, genre popularity, and content ratings over the years.</run>
+                  </formatted-text>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone forceUpdate='true' h='40442' id='11' type-v2='text' w='67077' x='16462' y='37061'>
+                  <formatted-text>
+                    <run bold='true' fontcolor='#ffffff' fontname='Benton Sans Book'>Key Insights:</run>
+                    <run>Æ&#10;</run>
+                    <run fontcolor='#ffffff' fontname='Benton Sans Book'>🔴 </run>
+                    <run bold='true' fontcolor='#ffffff' fontname='Benton Sans Book'>Movies vs. TV Shows:</run>
+                    <run fontcolor='#ffffff' fontname='Benton Sans Book'> The proportion of Movies and TV Shows in Netflix’s catalog.</run>
+                    <run>Æ&#10;</run>
+                    <run fontcolor='#ffffff' fontname='Benton Sans Book'>📈 </run>
+                    <run bold='true' fontcolor='#ffffff' fontname='Benton Sans Book'>Content Growth Over Time:</run>
+                    <run fontcolor='#ffffff' fontname='Benton Sans Book'> Trends in content additions to Netflix, categorized by year.</run>
+                    <run>Æ&#10;</run>
+                    <run fontcolor='#ffffff' fontname='Benton Sans Book'>🌍 </run>
+                    <run bold='true' fontcolor='#ffffff' fontname='Benton Sans Book'>Top Countries Producing Content:</run>
+                    <run fontcolor='#ffffff' fontname='Benton Sans Book'> Geographic distribution of Netflix content worldwide.</run>
+                    <run>Æ&#10;</run>
+                    <run fontcolor='#ffffff' fontname='Benton Sans Book'>🎭 </run>
+                    <run bold='true' fontcolor='#ffffff' fontname='Benton Sans Book'>Most Popular Genres:</run>
+                    <run fontcolor='#ffffff' fontname='Benton Sans Book'> A breakdown of the top genres available on Netflix.</run>
+                    <run>Æ&#10;</run>
+                    <run fontcolor='#ffffff' fontname='Benton Sans Book'>⭐ </run>
+                    <run bold='true' fontcolor='#ffffff' fontname='Benton Sans Book'>Content Ratings:</run>
+                    <run fontcolor='#ffffff' fontname='Benton Sans Book'> Analysis of the most frequent ratings (TV-MA, PG-13, etc.).</run>
+                  </formatted-text>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone forceUpdate='true' h='23277' id='12' type-v2='text' w='72769' x='16154' y='68531'>
+                  <formatted-text>
+                    <run bold='true' fontcolor='#ffffff' fontname='Benton Sans Book'>Purpose:</run>
+                    <run>Æ&#10;</run>
+                    <run fontcolor='#ffffff' fontname='Benton Sans Book'>- Identify content trends to understand Netflix&apos;s evolving library.</run>
+                    <run>Æ&#10;</run>
+                    <run fontcolor='#ffffff' fontname='Benton Sans Book'>- Analyze the most popular genres and countries contributing to the platform.</run>
+                    <run>Æ&#10;</run>
+                    <run fontcolor='#ffffff' fontname='Benton Sans Book'>- Gain insights into content ratings and their impact on audience preferences.</run>
+                  </formatted-text>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone h='8000' id='13' type-v2='dashboard-object' w='25231' x='74000' y='91077'>
+                  <button action='tabdoc:goto-sheet window-id=&quot;{1CA9D0C1-64FC-4001-B814-0577677AD08D}&quot;' button-type='text'>
+                    <button-visual-state>
+                      <caption>Next</caption>
+                      <button-caption-font-style bold='true' fontcolor='#e15759' fontname='Tableau Bold' fontsize='12' />
+                      <format attr='background-color' value='#000000' />
+                    </button-visual-state>
+                  </button>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+              </zone>
+              <zone-style>
+                <format attr='border-color' value='#000000' />
+                <format attr='border-style' value='none' />
+                <format attr='border-width' value='0' />
+                <format attr='margin' value='8' />
+              </zone-style>
+            </zone>
+          </zones>
+        </devicelayout>
+      </devicelayouts>
+      <simple-id uuid='{FA715224-4107-45AE-AFF2-1A8D149B2EF5}' />
+    </dashboard>
+    <dashboard enable-sort-zone-taborder='true' name='Netflix Dashboard'>
+      <repository-location derived-from='https://haproxy-traffic-splitter/workbooks/NetflixDashboard_17413855811130/NetflixDashboard?rev=' id='NetflixDashboard' path='/workbooks/NetflixDashboard_17413855811130' revision='' />
+      <style>
+        <style-rule element='table'>
+          <format attr='background-color' value='#000000' />
+        </style-rule>
+      </style>
+      <size maxheight='860' maxwidth='1120' minheight='560' minwidth='480' sizing-mode='range' />
+      <datasources>
+        <datasource caption='netflix_titles' name='federated.1c7k9390kod6to102wt1w1y9yzxf' />
+      </datasources>
+      <datasource-dependencies datasource='federated.1c7k9390kod6to102wt1w1y9yzxf'>
+        <column caption='Country' datatype='string' name='[country]' role='dimension' semantic-role='[Country].[ISO3166_2]' type='nominal' />
+        <column-instance column='[country]' derivation='None' name='[none:country:nk]' pivot='key' type='nominal' />
+        <column-instance column='[release_year]' derivation='None' name='[none:release_year:qk]' pivot='key' type='quantitative' />
+        <column caption='Release Year' datatype='integer' name='[release_year]' role='dimension' type='quantitative' />
+      </datasource-dependencies>
+      <zones>
+        <zone h='100000' id='23' type-v2='layout-basic' w='100000' x='0' y='0'>
+          <zone h='100000' id='42' param='horz' type-v2='layout-flow' w='100000' x='0' y='0' />
+        </zone>
+        <zone h='15598' id='3' is-centered='0' is-scaled='1' param='Image/Netflix-logo-red-black-png.png' type-v2='bitmap' w='18820' x='203' y='520' />
+        <zone h='8000' id='18' type-v2='dashboard-object' w='12054' x='87679' y='90000'>
+          <button action='tabdoc:goto-sheet window-id=&quot;{7D48BDF6-03A7-4B23-9E3E-6196ABE347E6}&quot;' button-type='text'>
+            <button-visual-state>
+              <caption>Previous</caption>
+              <button-caption-font-style fontcolor='#e15759' fontname='Tableau Bold' fontsize='12' />
+              <format attr='background-color' value='#000000' />
+            </button-visual-state>
+          </button>
+        </zone>
+        <zone h='32582' id='24' param='horz' type-v2='layout-flow' w='32859' x='610' y='14905'>
+          <zone h='32582' id='26' name='Total Movies &amp; Shows By Country' w='32859' x='610' y='14905'>
+            <layout-cache minheight='272' minwidth='202' type-h='scalable' type-w='scalable' />
+            <zone-style>
+              <format attr='border-color' value='#000000' />
+              <format attr='border-style' value='none' />
+              <format attr='border-width' value='0' />
+              <format attr='margin' value='4' />
+            </zone-style>
+          </zone>
+        </zone>
+        <zone h='32756' id='25' param='horz' type-v2='layout-flow' w='32655' x='66531' y='14558'>
+          <zone h='32756' id='29' name='Distribution' w='32655' x='66531' y='14558'>
+            <layout-cache cell-count-w='1' type-h='cell' type-w='cell' />
+            <zone-style>
+              <format attr='border-color' value='#000000' />
+              <format attr='border-style' value='none' />
+              <format attr='border-width' value='0' />
+              <format attr='margin' value='4' />
+            </zone-style>
+          </zone>
+        </zone>
+        <zone h='32756' id='27' param='horz' type-v2='layout-flow' w='32350' x='33774' y='14558'>
+          <zone h='32756' id='28' name='Ratings' w='32350' x='33774' y='14558'>
+            <layout-cache cell-count-w='14' minheight='223' non-cell-size-w='66' type-h='scalable' type-w='cell' />
+            <zone-style>
+              <format attr='border-color' value='#000000' />
+              <format attr='border-style' value='none' />
+              <format attr='border-width' value='0' />
+              <format attr='margin' value='4' />
+            </zone-style>
+          </zone>
+        </zone>
+        <zone h='30590' id='34' param='horz' type-v2='layout-flow' w='32411' x='982' y='51715'>
+          <zone h='30590' id='35' name='Top 10 Genre' w='32411' x='982' y='51715'>
+            <layout-cache cell-count-w='1' type-h='cell' type-w='cell' />
+            <zone-style>
+              <format attr='border-color' value='#000000' />
+              <format attr='border-style' value='none' />
+              <format attr='border-width' value='0' />
+              <format attr='margin' value='4' />
+            </zone-style>
+          </zone>
+        </zone>
+        <zone h='28532' id='36' param='horz' type-v2='layout-flow' w='29464' x='35536' y='53224'>
+          <zone h='28532' id='37' name='Total Movies &amp; Total Shows by Years' w='29464' x='35536' y='53224'>
+            <layout-cache cell-count-w='13' minheight='224' non-cell-size-w='66' type-h='scalable' type-w='cell' />
+            <zone-style>
+              <format attr='border-color' value='#000000' />
+              <format attr='border-style' value='none' />
+              <format attr='border-width' value='0' />
+              <format attr='margin' value='4' />
+            </zone-style>
+          </zone>
+        </zone>
+        <zone h='33333' id='30' type-v2='layout-basic' w='33304' x='65804' y='51166'>
+          <zone h='33333' id='39' name='Movies Duration' w='33304' x='65804' y='51166'>
+            <zone-style>
+              <format attr='border-color' value='#000000' />
+              <format attr='border-style' value='none' />
+              <format attr='border-width' value='0' />
+              <format attr='margin' value='4' />
+            </zone-style>
+          </zone>
+        </zone>
+        <zone h='6036' id='43' mode='dropdown' name='Ratings' param='[federated.1c7k9390kod6to102wt1w1y9yzxf].[none:country:nk]' type-v2='filter' values='database' w='14286' x='19732' y='5350' />
+        <zone h='8093' id='44' name='Distribution' param='[federated.1c7k9390kod6to102wt1w1y9yzxf].[none:release_year:qk]' type-v2='filter' values='relevant' w='29464' x='35625' y='4938' />
+      </zones>
+      <devicelayouts>
+        <devicelayout auto-generated='true' name='Phone'>
+          <size maxheight='2000' minheight='2000' sizing-mode='vscroll' />
+          <zones>
+            <zone h='100000' id='54' type-v2='layout-basic' w='100000' x='0' y='0'>
+              <zone h='97806' id='53' param='vert' type-v2='layout-flow' w='98572' x='714' y='1097'>
+                <zone fixed-size='135' h='15598' id='3' is-centered='0' is-fixed='true' is-scaled='1' param='Image/Netflix-logo-red-black-png.png' type-v2='bitmap' w='18820' x='203' y='520'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone h='6036' id='43' mode='dropdown' name='Ratings' param='[federated.1c7k9390kod6to102wt1w1y9yzxf].[none:country:nk]' type-v2='filter' values='database' w='14286' x='19732' y='5350'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone fixed-size='274' h='32756' id='28' is-fixed='true' name='Ratings' w='32350' x='33774' y='14558'>
+                  <layout-cache cell-count-w='14' minheight='205' non-cell-size-w='66' type-h='scalable' type-w='cell' />
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone h='8093' id='44' name='Distribution' param='[federated.1c7k9390kod6to102wt1w1y9yzxf].[none:release_year:qk]' type-v2='filter' values='relevant' w='29464' x='35625' y='4938'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone fixed-size='274' h='32756' id='29' is-fixed='true' name='Distribution' w='32655' x='66531' y='14558'>
+                  <layout-cache cell-count-w='1' type-h='cell' type-w='cell' />
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone fixed-size='272' h='32582' id='26' is-fixed='true' name='Total Movies &amp; Shows By Country' w='32859' x='610' y='14905'>
+                  <layout-cache minheight='272' minwidth='202' type-h='scalable' type-w='scalable' />
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone fixed-size='279' h='33333' id='39' is-fixed='true' name='Movies Duration' w='33304' x='65804' y='51166'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone fixed-size='255' h='30590' id='35' is-fixed='true' name='Top 10 Genre' w='32411' x='982' y='51715'>
+                  <layout-cache cell-count-w='1' type-h='cell' type-w='cell' />
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone fixed-size='237' h='28532' id='37' is-fixed='true' name='Total Movies &amp; Total Shows by Years' w='29464' x='35536' y='53224'>
+                  <layout-cache cell-count-w='13' minheight='223' non-cell-size-w='66' type-h='scalable' type-w='cell' />
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone h='8000' id='18' type-v2='dashboard-object' w='12054' x='87679' y='90000'>
+                  <button action='tabdoc:goto-sheet window-id=&quot;{7D48BDF6-03A7-4B23-9E3E-6196ABE347E6}&quot;' button-type='text'>
+                    <button-visual-state>
+                      <caption>Previous</caption>
+                      <button-caption-font-style fontcolor='#e15759' fontname='Tableau Bold' fontsize='12' />
+                      <format attr='background-color' value='#000000' />
+                    </button-visual-state>
+                  </button>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+              </zone>
+            </zone>
+          </zones>
+        </devicelayout>
+      </devicelayouts>
+      <simple-id uuid='{EB5C97B4-4AB3-41F2-BB86-0D048DD74D25}' />
+    </dashboard>
+  </dashboards>
+  <windows pres-mode='true' source-height='30'>
+    <window class='worksheet' name='Total Movies &amp; Shows By Country'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card pane-specification-id='0' param='[federated.1c7k9390kod6to102wt1w1y9yzxf].[__tableau_internal_object_id__].[cnt:netflix_titles.csv_29523FE54D2846DFB91656DFE0639443:qk]' type='color' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{3038D89A-F3FF-4669-8299-31F9E3FFC014}' />
+    </window>
+    <window class='worksheet' name='Ratings'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{8A27057F-4E68-4DBA-8784-3732A57B9F16}' />
+    </window>
+    <window class='worksheet' name='Distribution'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card pane-specification-id='0' param='[federated.1c7k9390kod6to102wt1w1y9yzxf].[none:type:nk]' type='color' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{7D9D3251-B306-4539-B340-BC390B28FB47}' />
+    </window>
+    <window class='worksheet' name='Total Movies &amp; Total Shows by Years'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card pane-specification-id='0' param='[federated.1c7k9390kod6to102wt1w1y9yzxf].[none:type:nk]' type='color' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{324C7191-A7AB-4282-BCF1-901E17681B43}' />
+    </window>
+    <window class='worksheet' name='Top 10 Genre'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{5F3863B5-01A1-4E91-9048-9D39CFF80D05}' />
+    </window>
+    <window class='worksheet' maximized='true' name='Movies Duration'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{6371F3B5-F6AB-4B91-9D0C-7DBAEA317C2A}' />
+    </window>
+    <window class='worksheet' name='Number of Seasons in TV shows'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='title' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{E4F48236-E6FF-4D7E-AB20-6FE6AF4D1D66}' />
+    </window>
+    <window class='dashboard' name='Introduction'>
+      <viewpoints />
+      <active id='13' />
+      <simple-id uuid='{7D48BDF6-03A7-4B23-9E3E-6196ABE347E6}' />
+    </window>
+    <window class='dashboard' name='Netflix Dashboard'>
+      <viewpoints>
+        <viewpoint name='Distribution'>
+          <zoom type='entire-view' />
+        </viewpoint>
+        <viewpoint name='Movies Duration'>
+          <zoom type='entire-view' />
+        </viewpoint>
+        <viewpoint name='Ratings'>
+          <zoom type='entire-view' />
+        </viewpoint>
+        <viewpoint name='Top 10 Genre'>
+          <zoom type='entire-view' />
+        </viewpoint>
+        <viewpoint name='Total Movies &amp; Shows By Country'>
+          <zoom type='entire-view' />
+          <floating-toolbar-visibility value='1' />
+        </viewpoint>
+        <viewpoint name='Total Movies &amp; Total Shows by Years'>
+          <zoom type='entire-view' />
+        </viewpoint>
+      </viewpoints>
+      <active id='28' />
+      <device-preview visible='true'>
+        <device name='Fire HD 10' type='Tablet' />
+      </device-preview>
+      <simple-id uuid='{1CA9D0C1-64FC-4001-B814-0577677AD08D}' />
+    </window>
+  </windows>
+</workbook>

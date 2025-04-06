@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>French Language Trainer</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .input-box { margin-bottom: 10px; }
+        button { padding: 10px; margin-right: 10px; }
+        .response { margin-top: 20px; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <h1>French Language Trainer</h1>
+
+    <div class="input-box">
+        <label for="input-text">Enter your text:</label><br>
+        <textarea id="input-text" rows="4" cols="50"></textarea>
+    </div>
+
+    <button onclick="correctGrammar()">Correct Grammar</button>
+    <button onclick="suggestVocabulary()">Vocabulary Suggestion</button>
+
+    <div class="response" id="response"></div>
+
+    <h2>Conversational Practice</h2>
+    <div class="chat-box">
+        <textarea id="user-input" rows="2" cols="50" placeholder="Type your message in French..."></textarea>
+        <button onclick="sendMessage()">Send</button>
+    </div>
+    <div id="chat-history" style="margin-top: 20px; border: 1px solid #ddd; padding: 10px; height: 300px; overflow-y: scroll;"></div>
+
+
+    <script>
+        async function correctGrammar() {
+            const inputText = document.getElementById("input-text").value;
+            const response = await fetch("http://127.0.0.1:8000/correct_grammar/", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ text: inputText })
+            });
+            const data = await response.json();
+            document.getElementById("response").innerText = `Corrected: ${data.corrected_sentence}`;
+        }
+
+        async function suggestVocabulary() {
+            const inputText = document.getElementById("input-text").value;
+            const response = await fetch("http://127.0.0.1:8000/vocabulary/", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ text: inputText })
+            });
+            const data = await response.json();
+            document.getElementById("response").innerText = `Response: ${data.response}`;
+
+            async function sendMessage() {
+        const userMessage = document.getElementById("user-input").value;
+        const chatHistory = document.getElementById("chat-history");
+        
+        // Append user message to chat history
+        chatHistory.innerHTML += `<p><strong>You:</strong> ${userMessage}</p>`;
+        
+        // Send the message to the backend
+        const response = await fetch("http://127.0.0.1:8000/conversation/", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ text: userMessage })
+        });
+        
+        const data = await response.json();
+        
+        // Append the assistant's response to chat history
+        chatHistory.innerHTML += `<p><strong>Assistant:</strong> ${data.response}</p>`;
+        
+        // Clear the input field
+        document.getElementById("user-input").value = "";
+        
+        // Scroll to the bottom of the chat history
+        chatHistory.scrollTop = chatHistory.scrollHeight;
+        }
+    </script>
+</body>
+</html>

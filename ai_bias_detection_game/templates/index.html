@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Bias Detection Game (Three.js)</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <style>
+        body { margin: 0; text-align: center; font-family: Arial, sans-serif; background: #222; color: white; }
+        canvas { display: block; margin: auto; }
+        #info { position: absolute; top: 10px; left: 50%; transform: translateX(-50%); background: rgba(0, 0, 0, 0.7); padding: 10px; border-radius: 5px; }
+        button { margin-top: 10px; padding: 10px; font-size: 18px; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <div id="info">
+        <h1>AI Bias Detection Game</h1>
+        <p id="scenario">Scenario: Waiting...</p>
+        <p id="decision">AI Decision: -</p>
+        <p id="bias">Bias Score: -</p>
+        <p id="status" style="font-weight: bold;">Status: Ready</p>
+        <button onclick="getAIDecision()">Run AI Decision</button>
+    </div>
+
+    <script>
+        let scene, camera, renderer, drone, npc;
+
+        function init() {
+            scene = new THREE.Scene();
+            camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+            camera.position.set(0, 5, 15);
+
+            renderer = new THREE.WebGLRenderer();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            document.body.appendChild(renderer.domElement);
+
+            // 🏞️ Ground
+            const ground = new THREE.Mesh(
+                new THREE.PlaneGeometry(20, 20),
+                new THREE.MeshStandardMaterial({ color: 0x228B22 }) // Green ground
+            );
+            ground.rotation.x = -Math.PI / 2;
+            scene.add(ground);
+
+            // 🌌 Sky
+            scene.background = new THREE.Color(0x87CEEB); // Sky blue
+
+            // 💡 Lighting
+            const light = new THREE.DirectionalLight(0xffffff, 1);
+            light.position.set(5, 10, 5);
+            scene.add(light);
+
+            // 🚁 Create Drone Model
+            drone = new THREE.Group();
+            const body = new THREE.Mesh(
+                new THREE.CylinderGeometry(0.5, 0.5, 1.2, 16),
+                new THREE.MeshStandardMaterial({ color: 0x8888ff })
+            );
+            body.rotation.x = Math.PI / 2;
+            drone.add(body);
+            
+            const propellers = [];
+            for (let i = 0; i < 4; i++) {
+                const propeller = new THREE.Mesh(
+                    new THREE.CylinderGeometry(0.5, 0.5, 0.05, 12),
+                    new THREE.MeshStandardMaterial({ color: 0x000000 })
+                );
+                propeller.position.set(i % 2 === 0 ? 1 : -1, 0.4, i < 2 ? -1 : 1);
+                drone.add(propeller);
+                propellers.push(propeller);
+            }
+
+            drone.position.set(0, 3, 0);
+            scene.add(drone);
+
+            function animatePropellers() {
+                requestAnimationFrame(animatePropellers);
+                propellers.forEach(p => (p.rotation.y += 0.3));
+            }
+            animatePropellers();
+
+            animate();
+        }
+
+        function createNPC(targetData) {
+            if (npc) scene.remove(npc); // Remove previous NPC
+            
+            console.log("Creating NPC with data:", targetData);
+
+            npc = new THREE.Group();
+
+            // NPC Body
+            const bodyMaterial = new THREE.MeshStandardMaterial({ color: getColor(targetData["Clothing Color"]) });
+            const body = new THREE.Mesh(new THREE.CylinderGeometry(0.4, 0.5, 1.5, 16), bodyMaterial);
+            body.position.y = 1;
+            npc.add(body);
+
+            // NPC Head
+            const headMaterial = new THREE.MeshStandardMaterial({ color: getRaceColor(targetData["Race"]) });
+            const head = new THREE.Mesh(new THREE.SphereGeometry(0.3, 16, 16), headMaterial);
+            head.position.y = 2;
+            npc.add(head);
+
+            // NPC Bag (if applicable)
+            if (targetData["Carrying Bag"]) {
+                const bagMaterial = new THREE.MeshStandardMaterial({ color: 0x654321 });
+                const bag = new THREE.Mesh(new THREE.BoxGeometry(0.5, 0.7, 0.2), bagMaterial);
+                bag.position.set(0, 1.2, -0.5);
+                npc.add(bag);
+            }
+
+            npc.position.set(0, 0, -5);
+            scene.add(npc);
+        }
+
+        function getColor(colorName) {
+            const colors = {
+                "Red": 0xff0000,
+                "Black": 0x000000,
+                "White": 0xffffff
+            };
+            return colors[colorName] || 0xffffff;
+        }
+
+        function getRaceColor(raceName) {
+            const raceColors = {
+                "Race A": 0xf5c0a0,
+                "Race B": 0x8d5524,
+                "Race C": 0xd2b48c
+            };
+            return raceColors[raceName] || 0xffffff;
+        }
+
+        function getAIDecision() {
+            fetch("http://127.0.0.1:5001/ai_decision")
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById("scenario").innerText = "Scenario: " + data.scenario;
+                    document.getElementById("decision").innerText = "AI Decision: " + data.decision;
+                    document.getElementById("bias").innerText = "Bias Score: " + data.bias_score;
+
+                    createNPC(data.target_attributes);
+
+                    if (data.biased) {
+                        document.getElementById("status").innerHTML = "🚨 <strong>Bias Detected! Target Removed!</strong>";
+                        document.getElementById("status").style.color = "red";
+                        setTimeout(() => scene.remove(npc), 1000);
+                    } else {
+                        document.getElementById("status").innerHTML = "✅ <strong>Decision Passed.</strong>";
+                        document.getElementById("status").style.color = "green";
+                    }
+                })
+                .catch(error => console.error("Error fetching AI decision:", error));
+        }
+
+        function animate() {
+            requestAnimationFrame(animate);
+            renderer.render(scene, camera);
+        }
+
+        window.onload = init;
+    </script>
+</body>
+</html>
