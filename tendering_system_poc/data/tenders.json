@@ -1,0 +1,338 @@
+[
+    {
+        "id": "12345",
+        "title": "Office Furniture Purchase",
+        "description": "Purchase new office furniture including desks, chairs, and storage units.",
+        "budget": 10000,
+        "deadline": "2025-06-30",
+        "bids": [
+            {
+                "supplier_name": "FurnitureCo",
+                "bid_amount": 9500,
+                "delivery_time": 30
+            },
+            {
+                "supplier_name": "OfficeFurnitureLtd",
+                "bid_amount": 9200,
+                "delivery_time": 25
+            }
+        ],
+        "selected_bid": null
+    },
+    {
+        "id": "67890",
+        "title": "Software Licensing for HR System",
+        "description": "Purchase software licenses for new HR management system.",
+        "budget": 15000,
+        "deadline": "2025-07-15",
+        "bids": [
+            {
+                "supplier_name": "TechSolutions",
+                "bid_amount": 14000,
+                "delivery_time": 15
+            },
+            {
+                "supplier_name": "SoftwareMax",
+                "bid_amount": 13500,
+                "delivery_time": 20
+            }
+        ],
+        "selected_bid": null
+    },
+    {
+        "id": "11223",
+        "title": "Website Development",
+        "description": "Develop a new company website with e-commerce functionality.",
+        "budget": 25000,
+        "deadline": "2025-12-31",
+        "bids": [
+            {
+                "supplier_name": "WebDevCo",
+                "bid_amount": 24000,
+                "delivery_time": 60
+            },
+            {
+                "supplier_name": "CreativeSolutions",
+                "bid_amount": 23000,
+                "delivery_time": 50
+            }
+        ],
+        "selected_bid": null
+    },
+    {
+        "id": "86d314b6-0863-46dc-b4c5-76f6fc19d0af",
+        "title": "abc",
+        "description": "xyz",
+        "budget": 100000,
+        "deadline": "2025-03-11",
+        "bids": [
+            {
+                "supplier_name": "mnp",
+                "bid_amount": 99000,
+                "delivery_time": 10
+            },
+            {
+                "supplier_name": "mnp",
+                "bid_amount": 99000,
+                "delivery_time": 10
+            },
+            {
+                "supplier_name": "fgh",
+                "bid_amount": 9900,
+                "delivery_time": 100
+            },
+            {
+                "supplier_name": "fgh",
+                "bid_amount": 9900,
+                "delivery_time": 100
+            }
+        ],
+        "selected_bid": {
+            "supplier_name": "mnp",
+            "bid_amount": 99000,
+            "delivery_time": 10
+        }
+    },
+    {
+        "id": "86d314b6-0863-46dc-b4c5-76f6fc19d0af",
+        "title": "abc",
+        "description": "xyz",
+        "budget": 100000,
+        "deadline": "2025-03-11",
+        "bids": [
+            {
+                "supplier_name": "mnp",
+                "bid_amount": 99000,
+                "delivery_time": 10
+            },
+            {
+                "supplier_name": "fgh",
+                "bid_amount": 9900,
+                "delivery_time": 100
+            }
+        ]
+    },
+    {
+        "id": "e678618b-9efd-4765-b049-62286e837123",
+        "title": "hhj",
+        "description": "dhtrhtjm",
+        "budget": 100,
+        "deadline": "2025-03-11",
+        "bids": [
+            {
+                "supplier_name": "wry",
+                "bid_amount": 99,
+                "delivery_time": 10
+            },
+            {
+                "supplier_name": "wry",
+                "bid_amount": 99,
+                "delivery_time": 10
+            },
+            {
+                "supplier_name": "wrfjyt",
+                "bid_amount": 99,
+                "delivery_time": 1
+            },
+            {
+                "supplier_name": "wrfjyt",
+                "bid_amount": 99,
+                "delivery_time": 1
+            }
+        ]
+    },
+    {
+        "id": "e678618b-9efd-4765-b049-62286e837123",
+        "title": "hhj",
+        "description": "dhtrhtjm",
+        "budget": 100,
+        "deadline": "2025-03-11",
+        "bids": [
+            {
+                "supplier_name": "wry",
+                "bid_amount": 99,
+                "delivery_time": 10
+            },
+            {
+                "supplier_name": "wrfjyt",
+                "bid_amount": 99,
+                "delivery_time": 1
+            }
+        ]
+    },
+    {
+        "id": "c24c0113-5567-4205-86cb-d0773759a7ef",
+        "title": "10 Chairs",
+        "description": "buy 10 chairs",
+        "budget": 200,
+        "deadline": "2025-03-11",
+        "bids": [
+            {
+                "supplier_name": "ikea",
+                "bid_amount": 210,
+                "delivery_time": 3
+            },
+            {
+                "supplier_name": "ikea",
+                "bid_amount": 210,
+                "delivery_time": 3
+            },
+            {
+                "supplier_name": "fnac",
+                "bid_amount": 190,
+                "delivery_time": 5
+            },
+            {
+                "supplier_name": "fnac",
+                "bid_amount": 190,
+                "delivery_time": 5
+            }
+        ],
+        "selected_bid": {
+            "supplier_name": "ikea",
+            "bid_amount": 210,
+            "delivery_time": 3
+        }
+    },
+    {
+        "id": "c24c0113-5567-4205-86cb-d0773759a7ef",
+        "title": "10 Chairs",
+        "description": "buy 10 chairs",
+        "budget": 200,
+        "deadline": "2025-03-11",
+        "bids": [
+            {
+                "supplier_name": "ikea",
+                "bid_amount": 210,
+                "delivery_time": 3
+            },
+            {
+                "supplier_name": "fnac",
+                "bid_amount": 190,
+                "delivery_time": 5
+            }
+        ]
+    },
+    {
+        "id": "b24abd42-0e00-404f-89df-95708748d77b",
+        "title": "buy energy",
+        "description": "buying energy",
+        "budget": 17000,
+        "deadline": "2025-03-11",
+        "bids": [
+            {
+                "supplier_name": "energy1",
+                "bid_amount": 16000,
+                "delivery_time": 3
+            },
+            {
+                "supplier_name": "energy1",
+                "bid_amount": 16000,
+                "delivery_time": 3
+            },
+            {
+                "supplier_name": "energy2",
+                "bid_amount": 18000,
+                "delivery_time": 2
+            },
+            {
+                "supplier_name": "energy2",
+                "bid_amount": 18000,
+                "delivery_time": 2
+            }
+        ],
+        "selected_bid": {
+            "supplier_name": "energy1",
+            "bid_amount": 16000,
+            "delivery_time": 3
+        }
+    },
+    {
+        "id": "b24abd42-0e00-404f-89df-95708748d77b",
+        "title": "buy energy",
+        "description": "buying energy",
+        "budget": 17000,
+        "deadline": "2025-03-11",
+        "bids": [
+            {
+                "supplier_name": "energy1",
+                "bid_amount": 16000,
+                "delivery_time": 3
+            },
+            {
+                "supplier_name": "energy2",
+                "bid_amount": 18000,
+                "delivery_time": 2
+            }
+        ]
+    },
+    {
+        "id": "8323f605-5a6f-4184-94f2-40e0f244118c",
+        "title": "chairs",
+        "description": "10 chairs",
+        "budget": 100,
+        "deadline": "2025-03-11",
+        "bids": []
+    },
+    {
+        "id": "8323f605-5a6f-4184-94f2-40e0f244118c",
+        "title": "chairs",
+        "description": "10 chairs",
+        "budget": 100,
+        "deadline": "2025-03-11",
+        "bids": []
+    },
+    {
+        "id": "e2caab22-f8af-4953-a181-652f8e86addc",
+        "title": "19chairs",
+        "description": "19 chairs",
+        "budget": 100,
+        "deadline": "2025-03-11",
+        "bids": [
+            {
+                "supplier_name": "ikea",
+                "bid_amount": 120,
+                "delivery_time": 5
+            },
+            {
+                "supplier_name": "ikea",
+                "bid_amount": 120,
+                "delivery_time": 5
+            },
+            {
+                "supplier_name": "ikea2",
+                "bid_amount": 150,
+                "delivery_time": 3
+            },
+            {
+                "supplier_name": "ikea2",
+                "bid_amount": 150,
+                "delivery_time": 3
+            }
+        ],
+        "selected_bid": {
+            "supplier_name": "ikea",
+            "bid_amount": 120,
+            "delivery_time": 5
+        }
+    },
+    {
+        "id": "e2caab22-f8af-4953-a181-652f8e86addc",
+        "title": "19chairs",
+        "description": "19 chairs",
+        "budget": 100,
+        "deadline": "2025-03-11",
+        "bids": [
+            {
+                "supplier_name": "ikea",
+                "bid_amount": 120,
+                "delivery_time": 5
+            },
+            {
+                "supplier_name": "ikea2",
+                "bid_amount": 150,
+                "delivery_time": 3
+            }
+        ]
+    }
+]

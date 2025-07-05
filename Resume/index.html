@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adesh Gaurav | AI & Data Science Portfolio</title>
+    <style>
+        :root {
+            --primary-color: #0a192f;
+            --secondary-color: #112240;
+            --text-color: #ccd6f6;
+            --highlight-color: #64ffda;
+            --light-text: #8892b0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background-color: var(--primary-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        header {
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 3.5rem;
+            margin: 0;
+            color: var(--text-color);
+        }
+
+        header .tagline {
+            font-size: 1.5rem;
+            color: var(--highlight-color);
+            margin-top: 0.5rem;
+        }
+
+        header p {
+            max-width: 600px;
+            margin: 1rem auto;
+            color: var(--light-text);
+        }
+
+        .contact-links a {
+            color: var(--highlight-color);
+            text-decoration: none;
+            margin: 0 1rem;
+            font-size: 1.1rem;
+            border: 1px solid var(--highlight-color);
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .contact-links a:hover {
+            background-color: var(--highlight-color);
+            color: var(--primary-color);
+        }
+
+        section {
+            padding: 4rem 0;
+            border-bottom: 1px solid var(--secondary-color);
+        }
+
+        h2 {
+            font-size: 2rem;
+            color: var(--highlight-color);
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        h2::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background-color: var(--highlight-color);
+            margin: 0.5rem auto 0;
+        }
+        
+        /* Projects Section */
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background-color: var(--secondary-color);
+            padding: 1.5rem;
+            border-radius: 8px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        .project-card h3 {
+            color: var(--text-color);
+            margin-top: 0;
+        }
+
+        .project-card .recognition {
+            color: var(--highlight-color);
+            font-weight: bold;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .project-card p {
+            color: var(--light-text);
+            flex-grow: 1;
+        }
+
+        .project-card a {
+            background-color: var(--highlight-color);
+            color: var(--primary-color);
+            text-decoration: none;
+            padding: 0.75rem;
+            text-align: center;
+            border-radius: 4px;
+            font-weight: bold;
+            margin-top: 1rem;
+            transition: opacity 0.3s;
+        }
+
+        .project-card a:hover {
+            opacity: 0.8;
+        }
+
+        /* Skills Section */
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+        }
+        .skill-category {
+            background-color: var(--secondary-color);
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            flex-basis: 300px;
+        }
+        .skill-category h4 {
+            color: var(--highlight-color);
+            margin-top: 0;
+        }
+        .skill-category ul {
+            list-style: none;
+            padding: 0;
+            color: var(--light-text);
+        }
+
+        /* Experience Section */
+        .experience-item {
+            background-color: var(--secondary-color);
+            padding: 1.5rem;
+            border-left: 4px solid var(--highlight-color);
+            margin-bottom: 1.5rem;
+        }
+        .experience-item h3 {
+            margin: 0 0 0.5rem 0;
+            color: var(--text-color);
+        }
+        .experience-item p {
+            margin: 0;
+            color: var(--light-text);
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            font-size: 0.9rem;
+            color: var(--light-text);
+        }
+
+    </style>
+</head>
+<body>
+
+    <header class="container">
+        <h1>Adesh Gaurav</h1>
+        <p class="tagline">AI & Data Science Professional</p>
+        <p>AI/Data Science Professional with 5+ years of experience in data engineering and predictive modeling. Currently pursuing an MSc in Data Science & AI Strategy at emlyon business school and seeking a 6-month internship starting July 2025.</p>
+        <div class="contact-links">
+            <a href="mailto:adesh.gaurav@edu.em-lyon.com">Email</a>
+            <a href="https://github.com/YOUR_GITHUB_USERNAME" target="_blank">GitHub</a>
+            <a href="https://linkedin.com/in/YOUR_LINKEDIN_PROFILE" target="_blank">LinkedIn</a>
+        </div>
+    </header>
+
+    <main class="container">
+
+        <section id="projects">
+            <h2>Projects</h2>
+            <div class="project-grid">
+                
+                <div class="project-card">
+                    <h3>PikaPal - AI Storytelling Agent</h3>
+                    <p class="recognition">🏆 WiDS Paris 2025 Datathon Winner - Responsible AI Excellence Award</p>
+                    <p>Built a secure LLM-powered storytelling agent for kids using Streamlit and Gemini, with a focus on child safety, content filtering, and privacy through a custom Trust Layer.</p>
+                    <a href="https://github.com/YOUR_USERNAME/pikapark_repo" target="_blank">View on GitHub</a>
+                </div>
+
+                <div class="project-card">
+                    <h3>AI Time Series Analysis</h3>
+                    <p class="recognition">🏆 Novartis Hackathon - 2nd Runner-up</p>
+                    <p>Designed forecasting models in TensorFlow/Python for healthcare analytics and engineered a Streamlit web app for anomaly detection and trend visualization.</p>
+                    <a href="https://github.com/YOUR_USERNAME/timeseries_repo" target="_blank">View on GitHub</a>
+                </div>
+
+                <div class="project-card">
+                    <h3>Predictive AI for Energy</h3>
+                     <p class="recognition">Presented at IEA Conference</p>
+                    <p>Showcased AI-driven solar forecasting and grid optimization strategies. Formulated a geospatial AI prototype for optimal solar farm site selection.</p>
+                    <a href="https://github.com/YOUR_USERNAME/energy_ai_repo" target="_blank">View on GitHub</a>
+                </div>
+
+                 <div class="project-card">
+                    <h3>AI French Tutor</h3>
+                     <p class="recognition">Personal Project</p>
+                    <p>Created a personal conversational app for adaptive language learning using Meta Llama 3.2B with a React and Python (FastAPI) backend.</p>
+                    <a href="https://github.com/YOUR_USERNAME/tutor_repo" target="_blank">View on GitHub</a>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="skills">
+            <h2>Skills</h2>
+            <div class="skills-container">
+                <div class="skill-category">
+                    <h4>Programming & Data</h4>
+                    <ul>
+                        <li>Python, SQL, Scala, PySpark, Pandas, NumPy</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h4>AI & Machine Learning</h4>
+                    <ul>
+                        <li>Deep Learning, Generative AI, Transformers, LangChain, Hugging Face, NLP</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h4>Cloud & MLOps</h4>
+                    <ul>
+                        <li>AWS (S3, Glue, SageMaker), Docker, Git, CI/CD</li>
+                    </ul>
+                </div>
+                 <div class="skill-category">
+                    <h4>Databases & Visualization</h4>
+                    <ul>
+                        <li>PostgreSQL, MongoDB, Snowflake, Power BI, Tableau</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="experience">
+            <h2>Experience</h2>
+            <div class="experience-item">
+                <h3>Senior Software Engineer - Data Engineering | Tiger Analytics</h3>
+                <p>Led design of data ingestion frameworks, cutting project effort by 50%. Improved AWS data pipelines, boosting processing speed by 20% and reducing issues by 30%.</p>
+            </div>
+             <div class="experience-item">
+                <h3>Data Scientist - Road Quality Prediction | Ampere (Renault Group)</h3>
+                <p>Collaborated to build an AI system for road quality prediction using Neural Networks and Federated Learning, enhancing vehicle fleet safety and curbing predictive maintenance costs.</p>
+            </div>
+            <div class="experience-item">
+                <h3>Software Engineer - Data and Analytics | Infosys</h3>
+                <p>Developed and standardized data warehousing architecture, cutting daily delta transaction processing time by 40%.</p>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Adesh Gaurav. Built with HTML & CSS.</p>
+        </div>
+    </footer>
+
+</body>
+</html>

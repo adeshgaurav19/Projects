@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finalize Contract</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="form-container">
+        <h1>Finalize Contract</h1>
+        <form id="finalizeContractForm">
+            <label for="tender_id">Tender ID:</label>
+            <input type="text" id="tender_id" name="tender_id" required>
+
+            <label for="supplier_name">Supplier Name:</label>
+            <input type="text" id="supplier_name" name="supplier_name" required>
+
+            <button type="submit">Finalize Contract</button>
+        </form>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

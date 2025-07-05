@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clean Energy AI App</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f0f4f8;
+            color: #333;
+        }
+        header {
+            width: 100%;
+            background-color: #0077B6;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        nav {
+            background-color: #00B4D8;
+            width: 100%;
+            display: flex;
+            justify-content: space-around;
+            padding: 10px 0;
+        }
+        nav button {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 18px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        nav button:hover {
+            text-decoration: underline;
+        }
+        .container, .home-container, .about-container, .geospatial-container {
+            display: none;
+            width: 90%;
+            max-width: 800px;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px auto;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+        }
+        .container.active, .home-container.active, .about-container.active, .geospatial-container.active {
+            display: block;
+        }
+        .input-group {
+            margin-bottom: 15px;
+        }
+        label {
+            font-size: 16px;
+            display: block;
+            margin-bottom: 5px;
+            color: #0077B6;
+        }
+        input[type="file"], input[type="text"], select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        button.submit {
+            background-color: #0077B6;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        button.submit:hover {
+            background-color: #005f8a;
+        }
+        .output {
+            display: none;
+        }
+        .loading {
+            display: none;
+            font-size: 18px;
+            font-weight: bold;
+            color: #0077B6;
+        }
+        #error-message, #error-geospatial {
+            color: red;
+            font-weight: bold;
+            display: none;
+        }
+        .plot-container {
+            text-align: center;
+        }
+        .plot-container iframe {
+            width: 100%;
+            height: 600px;
+            border: none;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>AI for Clean Energy</header>
+    <nav>
+        <button id="menu-home">Home</button>
+        <button id="menu-demand-supply">Demand-Supply Forecasting</button>
+        <button id="menu-geospatial">Geospatial Analysis</button>
+        <button id="menu-about">About Us</button>
+    </nav>
+
+    <!-- Home Page -->
+    <div class="home-container" id="home-container">
+        <h2>Welcome to AI for Clean Energy</h2>
+        <p>Explore demand-supply forecasting and geospatial analysis powered by AI.</p>
+    </div>
+
+    <!-- Demand-Supply Forecasting -->
+    <div class="container" id="demand-supply-container">
+        <h3>Demand-Supply Forecasting</h3>
+        <div class="input-group">
+            <label for="file">Upload Data (CSV):</label>
+            <input type="file" id="file" accept=".csv">
+        </div>
+        <button class="submit" id="forecast-button">Forecast</button>
+        <div id="loading" class="loading">Loading...</div>
+        <div id="error-message"></div>
+        <div class="output" id="forecast-output">
+            <h4>Forecast Results</h4>
+            <pre id="forecast-results"></pre>
+        </div>
+        <div class="plot-container" id="plot-container"></div>
+    </div>
+
+    <!-- Geospatial Analysis -->
+    <div class="geospatial-container" id="geospatial-container">
+        <h3>Geospatial Analysis</h3>
+        <div class="input-group">
+            <label for="file-geotiff">Upload GeoTIFF JSON:</label>
+            <input type="file" id="file-geotiff" accept=".tif, .tiff, .json">
+        </div>
+        <div class="input-group">
+            <label for="file-geojson">Upload GeoJSON:</label>
+            <input type="file" id="file-geojson" accept=".geojson, .json">
+        </div>
+        <button class="submit" id="run-geospatial-analysis">Run Analysis</button>
+        <div id="loading-geospatial" class="loading">Loading...</div>
+        <div id="error-geospatial"></div>
+        <div class="output" id="output-geospatial">
+            <h4>Analysis Results</h4>
+            <pre id="geospatial-results"></pre>
+        </div>
+        <div class="plot-container" id="geospatial-plot-container"></div>
+    </div>
+
+    <!-- About Us -->
+    <div class="about-container" id="about-container">
+        <h2>About Us</h2>
+        <p>We are a team working towards integrating AI into clean energy solutions. Our app is designed to optimize energy distribution and reduce waste.</p>
+    </div>
+
+    <script>
+        const BASE_URL = "http://127.0.0.1:8000";
+    
+        function switchView(view) {
+            document.querySelectorAll('.container, .home-container, .about-container, .geospatial-container').forEach(el => el.classList.remove('active'));
+            document.getElementById(view).classList.add('active');
+        }
+    
+        document.getElementById("menu-home").addEventListener("click", () => switchView("home-container"));
+        document.getElementById("menu-demand-supply").addEventListener("click", () => switchView("demand-supply-container"));
+        document.getElementById("menu-geospatial").addEventListener("click", () => switchView("geospatial-container"));
+        document.getElementById("menu-about").addEventListener("click", () => switchView("about-container"));
+    
+        document.getElementById('forecast-button').addEventListener('click', async () => {
+            const file = document.getElementById('file').files[0];
+            if (!file) {
+                alert('Please upload a CSV file.');
+                return;
+            }
+            document.getElementById('loading').style.display = 'block';
+            try {
+                const formData = new FormData();
+                formData.append('file', file);
+                const response = await fetch(`${BASE_URL}/energy-forecast/`, { method: 'POST', body: formData });
+                const result = await response.json();
+                document.getElementById('loading').style.display = 'none';
+                if (response.ok) {
+                    document.getElementById('forecast-results').textContent = JSON.stringify(result.forecast_data, null, 2);
+                    document.getElementById('forecast-output').style.display = 'block';
+                    const plotUrl = `${BASE_URL}${result.plot_url}`;
+                    document.getElementById('plot-container').innerHTML = `<iframe src="${plotUrl}" width="100%" height="600px"></iframe>`;
+                } else {
+                    document.getElementById('error-message').textContent = `Error: ${result.error}`;
+                    document.getElementById('error-message').style.display = 'block';
+                }
+            } catch (error) {
+                document.getElementById('loading').style.display = 'none';
+                document.getElementById('error-message').textContent = `Error: ${error.message}`;
+                document.getElementById('error-message').style.display = 'block';
+            }
+        });
+    
+        document.getElementById('run-geospatial-analysis').addEventListener('click', async () => {
+            const geotiffFile = document.getElementById('file-geotiff').files[0];
+            const geojsonFile = document.getElementById('file-geojson').files[0];
+            if (!geotiffFile || !geojsonFile) {
+                alert('Please upload both GeoTIFF and GeoJSON files.');
+                return;
+            }
+            document.getElementById('loading-geospatial').style.display = 'block';
+            try {
+                const formData = new FormData();
+                formData.append('file', geotiffFile);
+                formData.append('geojson', geojsonFile);
+                const response = await fetch(`${BASE_URL}/process-geospatial/`, { method: 'POST', body: formData });
+                const result = await response.json();
+                document.getElementById('loading-geospatial').style.display = 'none';
+                if (response.ok) {
+                    document.getElementById('geospatial-results').textContent = JSON.stringify(result.data_preview, null, 2);
+                    document.getElementById('output-geospatial').style.display = 'block';
+
+                    // Debugging: Log the plots to the console
+                    console.log("Interactive Plots:", result.interactive_plots);
+
+                    // Fetch and display plots
+                    const plots = result.interactive_plots;
+                    if (plots) {
+                        const plotContainer = document.getElementById('geospatial-plot-container'); // Make sure you're updating the correct container
+                        plotContainer.innerHTML = ''; // Clear existing plots
+                        // Ensure each plot is embedded with an iframe from the backend
+                        for (let plotKey in plots) {
+                            const plotUrl = `${BASE_URL}${plots[plotKey]}`;
+                            console.log("Plot URL:", plotUrl);  // Debugging: Log the plot URL
+                            plotContainer.innerHTML += `<iframe src="${plotUrl}" width="100%" height="600px"></iframe>`;
+                        }
+                    } else {
+                        document.getElementById('error-geospatial').textContent = "No plots available.";
+                        document.getElementById('error-geospatial').style.display = 'block';
+                    }
+                } else {
+                    document.getElementById('error-geospatial').textContent = `Error: ${result.error}`;
+                    document.getElementById('error-geospatial').style.display = 'block';
+                }
+            } catch (error) {
+                document.getElementById('loading-geospatial').style.display = 'none';
+                document.getElementById('error-geospatial').textContent = `Error: ${error.message}`;
+                document.getElementById('error-geospatial').style.display = 'block';
+            }
+        });
+
+    
+        switchView("home-container");
+    </script>
+    
+    
+</body>
+</html>

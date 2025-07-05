@@ -1,0 +1,3 @@
+adzee.mysql.pythonanywhere-services.com
+adzee
+iotmcgill

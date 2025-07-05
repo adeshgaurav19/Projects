@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DevTest AI - Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* CSS Variables for a consistent, futuristic theme */
+        :root {
+            --bg-color: #0d0f18;
+            --primary-color: #0f3460;
+            --secondary-color: #16213e;
+            --accent-color: #53a8b6;
+            --glow-color: #00f6ff;
+            --text-color: #e0e0e0;
+            --text-muted: #8a99b5;
+            --border-color: rgba(83, 168, 182, 0.3);
+            --font-primary: 'Orbitron', sans-serif;
+            --font-secondary: 'Rajdhani', sans-serif;
+            --error-color: #ff4d4d;
+        }
+
+        /* General body styling */
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: var(--font-secondary);
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-image: radial-gradient(circle at 1% 1%, rgba(15, 52, 96, 0.3) 1px, transparent 1px),
+                              radial-gradient(circle at 99% 99%, rgba(83, 168, 182, 0.2) 1px, transparent 1px);
+            background-size: 30px 30px;
+        }
+        
+        /* --- LOGIN PAGE STYLES --- */
+        #login-page {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            animation: fadeIn 1s ease-out;
+        }
+
+        .login-container {
+            width: 100%;
+            max-width: 400px;
+            padding: 3rem 2rem;
+            background-color: rgba(13, 15, 24, 0.8);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 0 40px rgba(0, 246, 255, 0.2);
+        }
+
+        .login-container .logo {
+            justify-content: center;
+            margin-bottom: 2rem;
+        }
+
+        .login-form input {
+            width: 100%;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            background-color: var(--secondary-color);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            color: var(--text-color);
+            font-family: var(--font-secondary);
+            font-size: 1.1rem;
+            box-sizing: border-box;
+        }
+        
+        .login-form input:focus {
+            outline: none;
+            box-shadow: 0 0 10px var(--glow-color);
+            border-color: var(--glow-color);
+        }
+
+        .login-form button {
+            width: 100%;
+            padding: 1rem;
+            background-color: var(--accent-color);
+            color: var(--bg-color);
+            border: none;
+            border-radius: 8px;
+            font-family: var(--font-primary);
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 15px rgba(83, 168, 182, 0.4);
+        }
+        
+        .login-form button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 25px rgba(83, 168, 182, 0.7);
+        }
+
+        .login-form button:disabled {
+            background-color: var(--text-muted);
+            cursor: not-allowed;
+            box-shadow: none;
+        }
+        
+        .error-message {
+            color: var(--error-color);
+            margin-top: 1rem;
+            min-height: 1.2em;
+        }
+
+
+        /* Main container for the dashboard layout */
+        .dashboard-container {
+            display: none; /* Hidden by default */
+            flex;
+            min-height: 100vh;
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        /* Sidebar navigation styling */
+        .sidebar {
+            width: 250px;
+            background-color: rgba(13, 15, 24, 0.8);
+            backdrop-filter: blur(10px);
+            border-right: 1px solid var(--border-color);
+            padding: 2rem 1rem;
+            display: flex;
+            flex-direction: column;
+            transition: width 0.3s ease;
+        }
+
+        /* Logo styling in the sidebar */
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 3rem;
+            padding: 0 1rem;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+        }
+
+        .logo h1 {
+            font-family: var(--font-primary);
+            font-size: 1.5rem;
+            color: var(--text-color);
+            margin: 0;
+            text-shadow: 0 0 5px var(--glow-color);
+        }
+
+        /* Navigation menu styling */
+        .nav-menu ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .nav-menu li a {
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            padding: 1rem;
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 8px;
+            margin-bottom: 0.5rem;
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
+        }
+
+        .nav-menu li a .icon {
+            margin-right: 15px;
+            font-size: 1.4rem;
+        }
+
+        .nav-menu li a:hover, .nav-menu li a.active {
+            background-color: rgba(83, 168, 182, 0.1);
+            color: var(--accent-color);
+            border-left: 3px solid var(--glow-color);
+            box-shadow: inset 0 0 15px rgba(83, 168, 182, 0.2);
+        }
+
+        /* User profile section in the sidebar */
+        .user-profile {
+            margin-top: auto;
+            padding: 1rem;
+            text-align: center;
+            border-top: 1px solid var(--border-color);
+        }
+        .user-profile img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            border: 2px solid var(--accent-color);
+            margin-bottom: 10px;
+        }
+        .user-profile h4 {
+            margin: 0;
+            font-weight: 700;
+        }
+        .user-profile p {
+            margin: 5px 0 0;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* Main content area styling */
+        .main-content {
+            flex-grow: 1;
+            padding: 2rem;
+            overflow-y: auto;
+        }
+        
+        #subscription-page {
+            display: none;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        header h2 {
+            font-family: var(--font-primary);
+            font-size: 2.5rem;
+            margin: 0;
+        }
+
+        .header-actions button {
+            background-color: var(--accent-color);
+            color: var(--bg-color);
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 8px;
+            font-family: var(--font-primary);
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 15px rgba(83, 168, 182, 0.4);
+        }
+
+        .header-actions button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 25px rgba(83, 168, 182, 0.7);
+        }
+        .header-actions button:disabled {
+            background-color: var(--text-muted);
+            transform: none;
+            box-shadow: none;
+            cursor: not-allowed;
+        }
+
+        /* Grid layout for dashboard widgets */
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        /* General widget styling with glassmorphism effect */
+        .widget {
+            background-color: rgba(22, 33, 62, 0.6);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+            position: relative;
+            overflow: hidden;
+            animation: fadeIn 0.5s ease-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .widget::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(83, 168, 182, 0.1), transparent 40%);
+            animation: rotate 15s linear infinite;
+            pointer-events: none;
+        }
+        
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .widget-title {
+            font-family: var(--font-primary);
+            font-size: 1.2rem;
+            margin-top: 0;
+            margin-bottom: 1.5rem;
+            color: var(--accent-color);
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 0.5rem;
+        }
+        
+        /* KPI widget styles */
+        .kpi-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .kpi-item { text-align: center; }
+
+        .kpi-value {
+            font-family: var(--font-primary);
+            font-size: 2.5rem;
+            color: var(--text-color);
+            text-shadow: 0 0 8px rgba(83, 168, 182, 0.5);
+            margin: 0;
+        }
+
+        .kpi-label {
+            color: var(--text-muted);
+            font-size: 1rem;
+            margin-top: 5px;
+        }
+
+        /* Specific widget styling */
+        #build-stability-chart {
+            height: 250px;
+            width: 100%;
+        }
+
+        #live-feed ul, #critical-bugs ul, #active-projects ul {
+            list-style: none; padding: 0; margin: 0; max-height: 250px; overflow-y: auto;
+        }
+
+        #live-feed li, #critical-bugs li, #active-projects li {
+            padding: 0.8rem 0; border-bottom: 1px solid var(--border-color); font-size: 0.95rem; display: flex; justify-content: space-between; align-items: center;
+        }
+        
+        #live-feed li:last-child, #critical-bugs li:last-child, #active-projects li:last-child {
+            border-bottom: none;
+        }
+
+        .log-time { color: var(--text-muted); font-size: 0.8rem; white-space: nowrap; margin-left: 1rem; }
+        .bug-critical { color: var(--error-color); font-weight: 700; }
+        .bug-high { color: #ff9933; font-weight: 600; }
+
+        /* --- SUBSCRIPTION PAGE STYLES --- */
+        .subscription-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+        .plan-card {
+            background-color: rgba(22, 33, 62, 0.6);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .plan-card.current-plan {
+            border-color: var(--glow-color);
+            box-shadow: 0 0 30px rgba(0, 246, 255, 0.3);
+            transform: scale(1.05);
+        }
+        .plan-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+        }
+        .plan-card h3 {
+            font-family: var(--font-primary);
+            font-size: 1.8rem;
+            color: var(--accent-color);
+            margin-top: 0;
+        }
+        .plan-price {
+            font-family: var(--font-primary);
+            font-size: 3rem;
+            margin: 1rem 0;
+        }
+        .plan-price span {
+            font-size: 1rem;
+            color: var(--text-muted);
+        }
+        .plan-features {
+            list-style: none;
+            padding: 0;
+            margin: 2rem 0;
+            text-align: left;
+        }
+        .plan-features li {
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+        .plan-features li::before {
+            content: '✓';
+            color: var(--glow-color);
+            margin-right: 10px;
+            font-weight: bold;
+        }
+        .plan-card button {
+            width: 100%;
+            padding: 1rem;
+            font-family: var(--font-primary);
+            font-size: 1.1rem;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+        .btn-primary {
+            background-color: var(--accent-color);
+            color: var(--bg-color);
+            border: none;
+        }
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--accent-color);
+            border: 1px solid var(--accent-color);
+        }
+        .plan-card.current-plan button {
+            background-color: var(--text-muted);
+            color: var(--bg-color);
+            cursor: not-allowed;
+            border: none;
+        }
+
+        /* Scrollbar styling */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--secondary-color); }
+        ::-webkit-scrollbar-thumb { background: var(--accent-color); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--glow-color); }
+        
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .dashboard-container { flex-direction: column; }
+            .sidebar {
+                width: 100%; height: auto; flex-direction: row; justify-content: space-between;
+                align-items: center; padding: 1rem; border-right: none; border-bottom: 1px solid var(--border-color);
+            }
+            .logo h1, .nav-menu, .user-profile { display: none; }
+            .main-content { padding: 1rem; }
+            header h2 { font-size: 1.8rem; }
+            .kpi-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    
+    <!-- LOGIN PAGE -->
+    <div id="login-page">
+        <div class="login-container">
+            <div class="logo">
+                <svg class="logo-icon" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <defs><filter id="glow"><feGaussianBlur stdDeviation="2.5" result="coloredBlur"/><feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+                    <path d="M50 2.5L93.3 26.25V73.75L50 97.5L6.7 73.75V26.25L50 2.5Z" stroke="var(--accent-color)" stroke-width="3"/><path d="M50 20V35M50 65V80M25 32.5L35 40M65 60L75 67.5M75 32.5L65 40M35 60L25 67.5" stroke="var(--accent-color)" stroke-width="2" stroke-linecap="round"/><circle cx="50" cy="50" r="10" stroke="var(--glow-color)" stroke-width="2.5" filter="url(#glow)"/>
+                </svg>
+                <h1>DevTest AI</h1>
+            </div>
+            <form class="login-form" id="login-form">
+                <input type="email" id="email" placeholder="Email (e.g., jane@example.com)" required>
+                <input type="password" id="password" placeholder="Password (e.g., password123)" required>
+                <button type="submit" id="login-btn">Login</button>
+                <p class="error-message" id="login-error"></p>
+            </form>
+        </div>
+    </div>
+
+
+    <!-- DASHBOARD CONTAINER -->
+    <div class="dashboard-container" id="dashboard-container">
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+            <div>
+                <div class="logo">
+                    <svg class="logo-icon" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <defs><filter id="glow-sidebar" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="2.5" result="coloredBlur"/><feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+                        <path d="M50 2.5L93.3 26.25V73.75L50 97.5L6.7 73.75V26.25L50 2.5Z" stroke="var(--accent-color)" stroke-width="3"/><path d="M50 20V35M50 65V80M25 32.5L35 40M65 60L75 67.5M75 32.5L65 40M35 60L25 67.5" stroke="var(--accent-color)" stroke-width="2" stroke-linecap="round"/><circle cx="50" cy="50" r="10" stroke="var(--glow-color)" stroke-width="2.5" filter="url(#glow-sidebar)"/>
+                    </svg>
+                    <h1>DevTest AI</h1>
+                </div>
+                <nav class="nav-menu">
+                    <ul>
+                        <li><a data-target="dashboard-main"><span class="icon">📊</span> Dashboard</a></li>
+                        <li><a data-target="projects-page"><span class="icon">🎮</span> Projects</a></li>
+                        <li><a data-target="reports-page"><span class="icon">📄</span> Reports</a></li>
+                        <li><a data-target="subscription-page"><span class="icon">💳</span> Subscription</a></li>
+                        <li><a data-target="settings-page"><span class="icon">⚙️</span> Settings</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="user-profile">
+                <img src="https://placehold.co/100x100/16213e/e0e0e0?text=JD" id="user-avatar" alt="User Avatar">
+                <h4 id="user-name">Jane Doe</h4>
+                <p id="user-title">Lead Developer</p>
+            </div>
+        </aside>
+
+        <!-- MAIN CONTENT WRAPPER -->
+        <div class="main-content-wrapper" style="flex-grow: 1; overflow-y: auto;">
+
+            <!-- DASHBOARD MAIN VIEW -->
+            <main class="main-content" id="dashboard-main">
+                <header>
+                    <h2>Project Overview: Neon Drifter</h2>
+                    <div class="header-actions">
+                        <button id="new-test-run-btn">+ New Test Run</button>
+                    </div>
+                </header>
+
+                <div class="kpi-grid">
+                    <div class="widget"><div class="kpi-item"><h3 id="bugs-found" class="kpi-value">1,204</h3><p class="kpi-label">Bugs Found (24h)</p></div></div>
+                    <div class="widget"><div class="kpi-item"><h3 id="test-coverage" class="kpi-value">92.7%</h3><p class="kpi-label">Total Test Coverage</p></div></div>
+                    <div class="widget"><div class="kpi-item"><h3 id="build-stability" class="kpi-value">98.5%</h3><p class="kpi-label">Build Stability</p></div></div>
+                </div>
+
+                <div class="dashboard-grid">
+                    <div class="widget" id="build-stability-widget"><h3 class="widget-title">Build Stability Over Time</h3><canvas id="build-stability-chart"></canvas></div>
+                    <div class="widget" id="live-feed"><h3 class="widget-title">Live Test Feed</h3><ul id="live-feed-list"></ul></div>
+                    <div class="widget" id="active-projects"><h3 class="widget-title">Active Projects</h3><ul id="active-projects-list"></ul></div>
+                    <div class="widget" id="critical-bugs"><h3 class="widget-title">Recent Critical Bugs</h3><ul id="critical-bugs-list"></ul></div>
+                </div>
+            </main>
+            
+            <!-- SUBSCRIPTION PAGE VIEW -->
+            <main class="main-content" id="subscription-page">
+                 <header>
+                    <h2>Subscription Management</h2>
+                 </header>
+                 <div class="subscription-grid" id="subscription-grid">
+                    <!-- JS will populate this -->
+                 </div>
+            </main>
+
+            <!-- Other Pages (Placeholders) -->
+            <main class="main-content" id="projects-page" style="display: none;"><header><h2>Projects</h2></header><p>Projects page coming soon.</p></main>
+            <main class="main-content" id="reports-page" style="display: none;"><header><h2>Reports</h2></header><p>Reports page coming soon.</p></main>
+            <main class="main-content" id="settings-page" style="display: none;"><header><h2>Settings</h2></header><p>Settings page coming soon.</p></main>
+
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            
+            // --- SIMULATED BACKEND ---
+            const backend = {
+                data: {
+                    feedEvents: ['AI Agent #3 started test run on `character_creator` module.', 'AI Agent #1 discovered a minor texture glitch in `level_05_sewers`.', 'AI Agent #4 completed stress test on multiplayer lobby.', 'AI Agent #2 is exploring out-of-bounds area in `tutorial_map`.', 'Build 2.8 deployed to staging environment.', 'AI Agent #3 found a HIGH priority bug: audio synchronization issue.'],
+                    criticalBugs: [{ title: 'Physics engine crash on `level_03_foundry`.', severity: 'critical' }, { title: 'Memory leak in main menu after 10 mins.', severity: 'critical' }, { title: 'Save file corruption when quitting during cutscene.', severity: 'high' }, { title: 'Player can fall through world in `sky_citadel`.', severity: 'critical' }, { title: 'Enemy AI freezes after using EMP ability.', severity: 'high' }],
+                    activeProjects: [{ name: 'Project: Neon Drifter', status: 'Testing', stability: '98.5%' }, { name: 'Project: Cybershift', status: 'Testing', stability: '96.1%' }, { name: 'Project: Echoes of Valor', status: 'Idle', stability: '99.8%' }, { name: 'Project: Solarfall', status: 'Compiling', stability: 'N/A' }],
+                    subscriptionTiers: [
+                        { id: 'basic', name: 'Basic', price: 99, features: ['1 AI Test Agent', '50 Test Hours/Month', 'Basic Bug Reporting', 'Community Support'], isCurrent: false },
+                        { id: 'pro', name: 'Pro', price: 499, features: ['5 AI Test Agents', '250 Test Hours/Month', 'Detailed Reporting & Analytics', 'Email & Chat Support'], isCurrent: true },
+                        { id: 'enterprise', name: 'Enterprise', price: 'Custom', features: ['Unlimited Agents & Hours', 'Dedicated Support Engineer', 'On-premise Deployment Options', 'API Access'], isCurrent: false },
+                    ]
+                },
+                loginUser: function(email, password) {
+                    return new Promise((resolve, reject) => {
+                        console.log(`Backend: Authenticating ${email}...`);
+                        setTimeout(() => {
+                            if (email === 'jane@example.com' && password === 'password123') {
+                                console.log('Backend: Authentication successful.');
+                                resolve({ name: 'Jane Doe', title: 'Lead Developer', email: 'jane@example.com', currentPlan: 'Pro' });
+                            } else {
+                                console.log('Backend: Authentication failed.');
+                                reject('Invalid email or password.');
+                            }
+                        }, 1500);
+                    });
+                },
+                fetchLiveFeedEvent: function() { return new Promise(resolve => setTimeout(() => resolve(this.data.feedEvents[Math.floor(Math.random() * this.data.feedEvents.length)]), 200)); },
+                fetchCriticalBugs: function() { return new Promise(resolve => setTimeout(() => resolve(this.data.criticalBugs), 500)); },
+                fetchActiveProjects: function() { return new Promise(resolve => setTimeout(() => resolve(this.data.activeProjects), 400)); },
+                fetchSubscriptionTiers: function() { return new Promise(resolve => setTimeout(() => resolve(this.data.subscriptionTiers), 300)); },
+                startNewTestRun: function(projectName) {
+                    return new Promise(resolve => {
+                        console.log(`Backend: Received request to start new test run for ${projectName}`);
+                        setTimeout(() => {
+                            const response = `New full regression test started for '${projectName}'. AI agents deployed.`;
+                            console.log(`Backend: Responding with success message.`);
+                            resolve(response);
+                        }, 1000);
+                    });
+                }
+            };
+            
+            // --- FRONTEND LOGIC ---
+            const loginPage = document.getElementById('login-page');
+            const dashboardContainer = document.getElementById('dashboard-container');
+            const loginForm = document.getElementById('login-form');
+            const loginBtn = document.getElementById('login-btn');
+            const loginError = document.getElementById('login-error');
+
+            const liveFeedList = document.getElementById('live-feed-list');
+            const criticalBugsList = document.getElementById('critical-bugs-list');
+            const activeProjectsList = document.getElementById('active-projects-list');
+            const newTestRunBtn = document.getElementById('new-test-run-btn');
+            const navLinks = document.querySelectorAll('.nav-menu a');
+            const contentPanes = document.querySelectorAll('.main-content-wrapper > .main-content');
+            const subscriptionGrid = document.getElementById('subscription-grid');
+            
+            let bugCounter = 1204;
+            let stabilityChart;
+
+            function initDashboard() {
+                dashboardContainer.style.display = 'flex';
+                loginPage.style.display = 'none';
+
+                // --- Chart.js Build Stability Chart ---
+                if (stabilityChart) stabilityChart.destroy();
+                const ctx = document.getElementById('build-stability-chart').getContext('2d');
+                stabilityChart = new Chart(ctx, {
+                    type: 'line',
+                    data: {
+                        labels: ['Build 2.1', 'Build 2.2', 'Build 2.3', 'Build 2.4', 'Build 2.5', 'Build 2.6', 'Build 2.7'],
+                        datasets: [{
+                            label: 'Stability %', data: [95.2, 96.1, 95.8, 97.5, 96.9, 98.2, 98.5],
+                            borderColor: 'var(--glow-color)', backgroundColor: 'rgba(83, 168, 182, 0.2)', fill: true, tension: 0.4,
+                            pointBackgroundColor: 'var(--glow-color)', pointBorderColor: '#fff', pointHoverRadius: 7, pointHoverBackgroundColor: '#fff', pointHoverBorderColor: 'var(--glow-color)'
+                        }]
+                    },
+                    options: {
+                        responsive: true, maintainAspectRatio: false,
+                        scales: { y: { beginAtZero: false, min: 90, max: 100, ticks: { color: 'var(--text-muted)' }, grid: { color: 'var(--border-color)' } }, x: { ticks: { color: 'var(--text-muted)' }, grid: { color: 'rgba(0,0,0,0)' } } },
+                        plugins: { legend: { display: false }, tooltip: { backgroundColor: 'var(--primary-color)', titleFont: { family: 'Orbitron' }, bodyFont: { family: 'Rajdhani' } } }
+                    }
+                });
+                
+                populateDashboardData();
+                startLiveFeed();
+                setupNavigation();
+                
+                // Set the initial active view
+                document.querySelector('.nav-menu a[data-target="dashboard-main"]').classList.add('active');
+                document.getElementById('dashboard-main').style.display = 'block';
+            }
+
+            function populateDashboardData() {
+                 backend.fetchCriticalBugs().then(bugs => {
+                    criticalBugsList.innerHTML = ''; 
+                    bugs.forEach(bug => {
+                        const container = document.createElement('div');
+                        const bugText = document.createElement('span'); bugText.textContent = bug.title; bugText.className = bug.severity === 'critical' ? 'bug-critical' : 'bug-high';
+                        const severityTag = document.createElement('span'); severityTag.textContent = bug.severity.toUpperCase(); severityTag.style.cssText = `background: ${bug.severity === 'critical' ? 'var(--error-color)' : '#ff9933'}; color: #111; padding: 2px 6px; border-radius: 4px; font-size: 0.7rem; font-weight: 700;`;
+                        container.appendChild(bugText); container.appendChild(severityTag); addListItem(criticalBugsList, container);
+                    });
+                });
+
+                backend.fetchActiveProjects().then(projects => {
+                    activeProjectsList.innerHTML = '';
+                    projects.forEach(project => {
+                        const container = document.createElement('div');
+                        const projectText = document.createElement('span'); projectText.textContent = `${project.name} - Stability: ${project.stability}`;
+                        const statusTag = document.createElement('span'); statusTag.textContent = project.status; statusTag.style.color = project.status === 'Testing' ? 'var(--glow-color)' : 'var(--text-muted)';
+                        container.appendChild(projectText); container.appendChild(statusTag); addListItem(activeProjectsList, container);
+                    });
+                });
+            }
+
+            function addListItem(listElement, content, isPrepended = false) {
+                 if (isPrepended && listElement.children.length > 10) listElement.removeChild(listElement.lastChild);
+                const listItem = document.createElement('li');
+                listItem.style.animation = 'fadeIn 0.5s';
+                if (typeof content === 'string') listItem.textContent = content; else listItem.appendChild(content);
+                if(isPrepended) listElement.prepend(listItem); else listElement.appendChild(listItem);
+            }
+            
+            function createAndAddFeedItem(eventText) {
+                const contentContainer = document.createElement('div');
+                const eventSpan = document.createElement('span'); eventSpan.textContent = eventText;
+                const timeSpan = document.createElement('span'); timeSpan.className = 'log-time'; timeSpan.textContent = new Date().toLocaleTimeString();
+                contentContainer.appendChild(eventSpan); contentContainer.appendChild(timeSpan);
+                addListItem(liveFeedList, contentContainer, true);
+                if (Math.random() > 0.8) document.getElementById('bugs-found').textContent = (++bugCounter).toLocaleString();
+            }
+
+            function startLiveFeed() {
+                setInterval(() => {
+                    backend.fetchLiveFeedEvent().then(event => createAndAddFeedItem(event));
+                }, 3000);
+                createAndAddFeedItem('Dashboard initialized. AI agents are standing by.');
+            }
+
+            function setupNavigation() {
+                navLinks.forEach(link => {
+                    link.addEventListener('click', (e) => {
+                        const targetId = e.currentTarget.dataset.target;
+                        
+                        navLinks.forEach(l => l.classList.remove('active'));
+                        e.currentTarget.classList.add('active');
+
+                        contentPanes.forEach(pane => {
+                            pane.style.display = pane.id === targetId ? 'block' : 'none';
+                        });
+
+                        if(targetId === 'subscription-page') {
+                            renderSubscriptionPage();
+                        }
+                    });
+                });
+            }
+
+            function renderSubscriptionPage() {
+                subscriptionGrid.innerHTML = 'Loading Plans...';
+                backend.fetchSubscriptionTiers().then(plans => {
+                    subscriptionGrid.innerHTML = '';
+                    plans.forEach(plan => {
+                        const card = document.createElement('div');
+                        card.className = `widget plan-card ${plan.isCurrent ? 'current-plan' : ''}`;
+                        let featuresHtml = plan.features.map(f => `<li>${f}</li>`).join('');
+                        let priceHtml = typeof plan.price === 'number' ? `$${plan.price}<span>/mo</span>` : 'Contact Us';
+                        let buttonHtml = plan.isCurrent 
+                            ? `<button disabled>Current Plan</button>`
+                            : `<button class="${plan.id === 'pro' ? 'btn-primary' : 'btn-secondary'}">Switch to ${plan.name}</button>`;
+
+                        card.innerHTML = `
+                            <h3>${plan.name}</h3>
+                            <div class="plan-price">${priceHtml}</div>
+                            <ul class="plan-features">${featuresHtml}</ul>
+                            ${buttonHtml}
+                        `;
+                        subscriptionGrid.appendChild(card);
+                    });
+                });
+            }
+
+            // --- Event Listeners ---
+            loginForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                loginBtn.textContent = 'Authenticating...';
+                loginBtn.disabled = true;
+                loginError.textContent = '';
+                const email = document.getElementById('email').value;
+                const password = document.getElementById('password').value;
+
+                backend.loginUser(email, password)
+                    .then(user => {
+                        document.getElementById('user-name').textContent = user.name;
+                        document.getElementById('user-title').textContent = `${user.currentPlan} Plan`;
+                        initDashboard();
+                    })
+                    .catch(error => {
+                        loginError.textContent = error;
+                        loginBtn.textContent = 'Login';
+                        loginBtn.disabled = false;
+                    });
+            });
+            
+            newTestRunBtn.addEventListener('click', () => {
+                const projectName = document.querySelector('header h2').textContent.split(': ')[1];
+                newTestRunBtn.textContent = 'Starting...';
+                newTestRunBtn.disabled = true;
+
+                backend.startNewTestRun(projectName).then(response => {
+                    createAndAddFeedItem(response);
+                    newTestRunBtn.textContent = '+ New Test Run';
+                    newTestRunBtn.disabled = false;
+                });
+            });
+
+        });
+    </script>
+</body>
+</html>

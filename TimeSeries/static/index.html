@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Analysis Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Data Analysis Dashboard</h1>
+    </header>
+    <main>
+        <section id="upload">
+            <h2>Upload Data</h2>
+            <label for="fileInput">Upload CSV File:</label>
+            <input type="file" id="fileInput" accept=".csv" aria-label="Select CSV file to upload">
+            <button onclick="uploadFile()" id="uploadBtn">Upload</button>
+            <div id="uploadMessage" aria-live="polite"></div>
+        </section>
+        <section id="fetchData">
+            <h2>Fetch Financial Data</h2>
+            <label for="predefinedStocks">Select Stock:</label>
+            <select id="predefinedStocks">
+                <option value="AAPL">Apple Inc. (AAPL)</option>
+                <option value="MSFT">Microsoft Corp. (MSFT)</option>
+                <option value="AMZN">Amazon.com Inc. (AMZN)</option>
+                <option value="GOOGL">Alphabet Inc. (GOOGL)</option>
+                <option value="TSLA">Tesla Inc. (TSLA)</option>
+            </select>
+            <label for="startDate">From:</label>
+            <input type="date" id="startDate" value="2023-01-01">
+            <label for="endDate">To:</label>
+            <input type="date" id="endDate" value="2023-12-31">
+            <button onclick="fetchFinanceData()" id="fetchBtn">Fetch Data & Plot</button>
+            <div id="fetchMessage" aria-live="polite"></div>
+            <div id="plotArea"></div>
+        </section>
+        <section id="eda">
+            <h2>Exploratory Data Analysis</h2>
+            <label for="edaOption">Choose Analysis:</label>
+            <select id="edaOption">
+                <option value="line_plot">Line Plot</option>
+                <option value="seasonality_decompose">Seasonality Decomposition</option>
+                <option value="correlation_heatmap">Correlation Heatmap</option>
+                <option value="summary_statistics">Summary Statistics</option>
+                <option value="rolling_mean">Rolling Mean</option>
+                <option value="histogram">Histogram</option>
+                <option value="boxplot">Boxplot</option>
+            </select>
+            <label for="columnName">Select Column:</label>
+            <select id="columnName"></select>
+            <button onclick="performEDA()" id="edaBtn">Analyze</button>
+            <div id="edaResult" aria-live="polite"></div>
+        </section>
+        <section id="model">
+            <h2>Model Selection</h2>
+            <label for="modelSelect">Choose Model:</label>
+            <select id="modelSelect">
+                <option value="ARIMA">ARIMA</option>
+                <option value="SARIMA">SARIMA</option>
+                <option value="Prophet">Prophet</option>
+                <option value="Boosting">Gradient Boosting</option>
+                <option value="Random Forest">Random Forest</option>
+                <option value="LSTM">LSTM</option>
+            </select>
+            <label for="targetColumn">Target Column:</label>
+            <select id="targetColumn"></select>
+            <button onclick="selectModel()" id="modelBtn">Run Model</button>
+            <div id="modelResult" aria-live="polite"></div>
+        </section>
+    </main>
+    <script src="app.js"></script>
+</body>
+</html>

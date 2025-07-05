@@ -1,0 +1,79 @@
+2024-12-02 03:43:35,224 - INFO - Cleaning up old files on startup...
+2024-12-02 03:44:22,693 - DEBUG - Calling on_part_begin with no data
+2024-12-02 03:44:22,696 - DEBUG - Calling on_header_field with data[42:61]
+2024-12-02 03:44:22,696 - DEBUG - Calling on_header_value with data[63:118]
+2024-12-02 03:44:22,696 - DEBUG - Calling on_header_end with no data
+2024-12-02 03:44:22,697 - DEBUG - Calling on_header_field with data[120:132]
+2024-12-02 03:44:22,697 - DEBUG - Calling on_header_value with data[134:150]
+2024-12-02 03:44:22,697 - DEBUG - Calling on_header_end with no data
+2024-12-02 03:44:22,697 - DEBUG - Calling on_headers_finished with no data
+2024-12-02 03:44:22,698 - DEBUG - Calling on_part_data with data[154:3964]
+2024-12-02 03:44:22,698 - DEBUG - Calling on_part_end with no data
+2024-12-02 03:44:22,698 - DEBUG - Calling on_part_begin with no data
+2024-12-02 03:44:22,698 - DEBUG - Calling on_header_field with data[4008:4027]
+2024-12-02 03:44:22,699 - DEBUG - Calling on_header_value with data[4029:4088]
+2024-12-02 03:44:22,699 - DEBUG - Calling on_header_end with no data
+2024-12-02 03:44:22,699 - DEBUG - Calling on_header_field with data[4090:4102]
+2024-12-02 03:44:22,700 - DEBUG - Calling on_header_value with data[4104:4124]
+2024-12-02 03:44:22,700 - DEBUG - Calling on_header_end with no data
+2024-12-02 03:44:22,700 - DEBUG - Calling on_headers_finished with no data
+2024-12-02 03:44:22,700 - DEBUG - Calling on_part_data with data[4128:4683]
+2024-12-02 03:44:22,700 - DEBUG - Calling on_part_end with no data
+2024-12-02 03:44:22,708 - DEBUG - Calling on_end with no data
+2024-12-02 03:44:22,719 - INFO - Received files: geotif_metadata.json, samplegeojson.geojson
+2024-12-02 03:44:22,719 - INFO - Saving Landsat file to: data/geotif_metadata.json
+2024-12-02 03:44:22,720 - INFO - Saving GeoJSON file to: data/samplegeojson.geojson
+2024-12-02 03:44:23,682 - WARNING - Feature length mismatch between model and merged data. Skipping feature importance plot.
+2024-12-02 03:44:23,735 - INFO - Plots saved: {'location_potential_map': 'plots/scatter_map.html', 'solar_potential_distribution': 'plots/solar_potential_distribution.html'}
+2024-12-02 03:44:23,738 - INFO - Plot URL for location_potential_map: /get-plot/scatter_map.html
+2024-12-02 03:44:23,739 - INFO - Plot URL for solar_potential_distribution: /get-plot/solar_potential_distribution.html
+2024-12-02 03:44:42,371 - DEBUG - Calling on_part_begin with no data
+2024-12-02 03:44:42,377 - DEBUG - Calling on_header_field with data[42:61]
+2024-12-02 03:44:42,377 - DEBUG - Calling on_header_value with data[63:131]
+2024-12-02 03:44:42,377 - DEBUG - Calling on_header_end with no data
+2024-12-02 03:44:42,378 - DEBUG - Calling on_header_field with data[133:145]
+2024-12-02 03:44:42,378 - DEBUG - Calling on_header_value with data[147:155]
+2024-12-02 03:44:42,378 - DEBUG - Calling on_header_end with no data
+2024-12-02 03:44:42,378 - DEBUG - Calling on_headers_finished with no data
+2024-12-02 03:44:42,378 - DEBUG - Calling on_part_data with data[159:3629]
+2024-12-02 03:44:42,379 - DEBUG - Calling on_part_end with no data
+2024-12-02 03:44:42,379 - DEBUG - Calling on_end with no data
+2024-12-02 03:44:42,561 - DEBUG - input tempfile: /var/folders/31/ftjtr3393td_3sj_dk6n1snr0000gn/T/tmp06naeorm/mnp7qe86.json
+2024-12-02 03:44:42,562 - DEBUG - input tempfile: /var/folders/31/ftjtr3393td_3sj_dk6n1snr0000gn/T/tmp06naeorm/8mvj_p_6.json
+2024-12-02 03:44:42,565 - DEBUG - idx 0
+2024-12-02 03:44:42,565 - DEBUG - running CmdStan, num_threads: None
+2024-12-02 03:44:42,565 - DEBUG - CmdStan args: ['/opt/anaconda3/lib/python3.12/site-packages/prophet/stan_model/prophet_model.bin', 'random', 'seed=82303', 'data', 'file=/var/folders/31/ftjtr3393td_3sj_dk6n1snr0000gn/T/tmp06naeorm/mnp7qe86.json', 'init=/var/folders/31/ftjtr3393td_3sj_dk6n1snr0000gn/T/tmp06naeorm/8mvj_p_6.json', 'output', 'file=/var/folders/31/ftjtr3393td_3sj_dk6n1snr0000gn/T/tmp06naeorm/prophet_modelxer1augu/prophet_model-20241202034442.csv', 'method=optimize', 'algorithm=newton', 'iter=10000']
+2024-12-02 03:44:42,565 - INFO - Chain [1] start processing
+2024-12-02 03:44:43,519 - INFO - Chain [1] done processing
+2024-12-02 03:44:43,527 - DEBUG - input tempfile: /var/folders/31/ftjtr3393td_3sj_dk6n1snr0000gn/T/tmp06naeorm/u5gi_0pn.json
+2024-12-02 03:44:43,528 - DEBUG - input tempfile: /var/folders/31/ftjtr3393td_3sj_dk6n1snr0000gn/T/tmp06naeorm/2vak6yyb.json
+2024-12-02 03:44:43,528 - DEBUG - idx 0
+2024-12-02 03:44:43,528 - DEBUG - running CmdStan, num_threads: None
+2024-12-02 03:44:43,528 - DEBUG - CmdStan args: ['/opt/anaconda3/lib/python3.12/site-packages/prophet/stan_model/prophet_model.bin', 'random', 'seed=75729', 'data', 'file=/var/folders/31/ftjtr3393td_3sj_dk6n1snr0000gn/T/tmp06naeorm/u5gi_0pn.json', 'init=/var/folders/31/ftjtr3393td_3sj_dk6n1snr0000gn/T/tmp06naeorm/2vak6yyb.json', 'output', 'file=/var/folders/31/ftjtr3393td_3sj_dk6n1snr0000gn/T/tmp06naeorm/prophet_modeldo4wid6p/prophet_model-20241202034443.csv', 'method=optimize', 'algorithm=newton', 'iter=10000']
+2024-12-02 03:44:43,528 - INFO - Chain [1] start processing
+2024-12-02 03:44:44,032 - INFO - Chain [1] done processing
+2024-12-02 03:45:10,338 - DEBUG - Calling on_part_begin with no data
+2024-12-02 03:45:10,339 - DEBUG - Calling on_header_field with data[42:61]
+2024-12-02 03:45:10,339 - DEBUG - Calling on_header_value with data[63:132]
+2024-12-02 03:45:10,339 - DEBUG - Calling on_header_end with no data
+2024-12-02 03:45:10,339 - DEBUG - Calling on_header_field with data[134:146]
+2024-12-02 03:45:10,339 - DEBUG - Calling on_header_value with data[148:156]
+2024-12-02 03:45:10,339 - DEBUG - Calling on_header_end with no data
+2024-12-02 03:45:10,339 - DEBUG - Calling on_headers_finished with no data
+2024-12-02 03:45:10,340 - DEBUG - Calling on_part_data with data[160:3616]
+2024-12-02 03:45:10,340 - DEBUG - Calling on_part_end with no data
+2024-12-02 03:45:10,340 - DEBUG - Calling on_end with no data
+2024-12-02 03:45:10,415 - DEBUG - input tempfile: /var/folders/31/ftjtr3393td_3sj_dk6n1snr0000gn/T/tmp06naeorm/fcnqam6b.json
+2024-12-02 03:45:10,418 - DEBUG - input tempfile: /var/folders/31/ftjtr3393td_3sj_dk6n1snr0000gn/T/tmp06naeorm/m5ut6gak.json
+2024-12-02 03:45:10,419 - DEBUG - idx 0
+2024-12-02 03:45:10,419 - DEBUG - running CmdStan, num_threads: None
+2024-12-02 03:45:10,419 - DEBUG - CmdStan args: ['/opt/anaconda3/lib/python3.12/site-packages/prophet/stan_model/prophet_model.bin', 'random', 'seed=41998', 'data', 'file=/var/folders/31/ftjtr3393td_3sj_dk6n1snr0000gn/T/tmp06naeorm/fcnqam6b.json', 'init=/var/folders/31/ftjtr3393td_3sj_dk6n1snr0000gn/T/tmp06naeorm/m5ut6gak.json', 'output', 'file=/var/folders/31/ftjtr3393td_3sj_dk6n1snr0000gn/T/tmp06naeorm/prophet_modelvga7vs8h/prophet_model-20241202034510.csv', 'method=optimize', 'algorithm=newton', 'iter=10000']
+2024-12-02 03:45:10,419 - INFO - Chain [1] start processing
+2024-12-02 03:45:11,464 - INFO - Chain [1] done processing
+2024-12-02 03:45:11,471 - DEBUG - input tempfile: /var/folders/31/ftjtr3393td_3sj_dk6n1snr0000gn/T/tmp06naeorm/fpixv4nd.json
+2024-12-02 03:45:11,472 - DEBUG - input tempfile: /var/folders/31/ftjtr3393td_3sj_dk6n1snr0000gn/T/tmp06naeorm/52xm6v49.json
+2024-12-02 03:45:11,472 - DEBUG - idx 0
+2024-12-02 03:45:11,472 - DEBUG - running CmdStan, num_threads: None
+2024-12-02 03:45:11,472 - DEBUG - CmdStan args: ['/opt/anaconda3/lib/python3.12/site-packages/prophet/stan_model/prophet_model.bin', 'random', 'seed=91492', 'data', 'file=/var/folders/31/ftjtr3393td_3sj_dk6n1snr0000gn/T/tmp06naeorm/fpixv4nd.json', 'init=/var/folders/31/ftjtr3393td_3sj_dk6n1snr0000gn/T/tmp06naeorm/52xm6v49.json', 'output', 'file=/var/folders/31/ftjtr3393td_3sj_dk6n1snr0000gn/T/tmp06naeorm/prophet_model6y2hgsgu/prophet_model-20241202034511.csv', 'method=optimize', 'algorithm=newton', 'iter=10000']
+2024-12-02 03:45:11,472 - INFO - Chain [1] start processing
+2024-12-02 03:45:12,211 - INFO - Chain [1] done processing
